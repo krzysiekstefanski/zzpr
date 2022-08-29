@@ -1,0 +1,18 @@
+export const shadow = {
+    white1: '0 24px 32px 0 rgba(236,236,236,0.50)',
+    white2: '0 40px 80px 0 rgba(171,171,171,0.50)',
+    babyblue1: '0 32px 48px 0 rgba(144,181,197,0.80)',
+    blue1: '0 32px 48px 0 rgba(80,137,253,0.64)',
+    green1: '0 32px 48px 0 rgba(151,224,199,0.59)',
+    orange1: '0 32px 48px 0 rgba(253,133,80,0.62)',
+    purple1: '0 32px 48px 0 rgba(200,163,236,0.64)',
+    red1: '0 32px 48px 0 rgba(197,144,144,0.64)',
+    yellow1: '0 32px 48px 0 rgba(223,194,134,0.64)',
+    babyblue2: '0 24px 32px 0 rgba(166,213,233,0.50)',
+    blue2: '0 24px 32px 0 rgba(177,190,222,0.50)',
+    green2: '0 24px 32px 0 rgba(179,219,217,0.50)',
+    orange2: '0 24px 32px 0 rgba(219,202,188,0.50)',
+    purple2: '0 24px 32px 0 rgba(199,186,213,0.50)',
+    red2: '0 24px 32px 0 rgba(224,178,178,0.50)',
+    yellow2: '0 24px 32px 0 rgba(231,216,162,0.63)',
+}
