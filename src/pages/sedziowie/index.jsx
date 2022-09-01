@@ -6,7 +6,7 @@ import Container from "../../atomic/partials/container";
 import SectionTitle from "../../atomic/atoms/section-title";
 import DownloadArea from "../../atomic/organisms/download-area";
 import Heading from "../../atomic/atoms/heading";
-import Text from "../../atomic/atoms/Text";
+import Text from "../../atomic/atoms/text";
 
 const NewsPage = ({ data }) => (
   <Layout>
