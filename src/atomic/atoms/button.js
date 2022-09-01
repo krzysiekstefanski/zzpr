@@ -14,7 +14,7 @@ const Wrapper = styled(Link)`
   background-color: ${props => props.theme === "secondary" ? button.backgroundColor[1] : button.backgroundColor[0]};
   border: 2px solid ${button.backgroundColor[0]};
   border-radius: ${props => (props.radius ? props.radius : "10px")};
-  color: ${props => props.theme === "secondary" ? button.backgroundColor[0] : button.backgroundColor[1]};
+  color: ${props => props.theme === "secondary" ? button.backgroundColor[0] : button.color};
   text-align: center;
   text-decoration: none;
   position: relative;

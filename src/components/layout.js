@@ -86,6 +86,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
+    min-height: calc(100vh - 126px);
     overflow: hidden;
   }
 `

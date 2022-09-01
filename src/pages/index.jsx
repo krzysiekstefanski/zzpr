@@ -13,13 +13,14 @@ import Contact from "../atomic/sections/homepage/contact"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
-    <Top data={data.wpPage.zdjecieGlowne} />
-    <Articles data={data.wpPage.sponsorzy} />
-    <Schedule data={data.wpPage.terminarz} />
+    {console.log(data)}
+    <Seo title={data.allWpPage.nodes[0].ustawienia.ustawieniaTytulStrony} />
+    <Top data={data.allWpPage.nodes[0].zdjecieGlowne} />
+    <Articles data={data.allWpPage.nodes[0].sponsorzy} />
+    <Schedule data={data.allWpPage.nodes[0].terminarz} />
     {/* <About data={data.wpPage.oNas} /> */}
     {/* <Info data={data.wpPage.informacje} /> */}
-    <Games data={data.wpPage.uslugi} />
+    <Games data={data.allWpPage.nodes[0].uslugi} />
     {/* <Team data={data.wpPage.kadra} />
     <Contact data={data.wpPage.kontakt} /> */}
   </Layout>
@@ -28,68 +29,70 @@ const IndexPage = ({ data }) => (
 export default IndexPage
 
 export const pageQuery = graphql`
-  query WordpressMain {
-    wpPage(id: { eq: "cG9zdDoy" }) {
-      title
-      ustawienia {
-        ustawieniaTytulStrony
-        ustawieniaOpisStrony
-        ustawieniaKolorPrzewodni
-        ustawieniaKolorDodatkowy
-      }
-      zdjecieGlowne {
-        zdjecieGlowneObraz {
-          sourceUrl
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1896) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+  query WordpressPages {
+    allWpPage(filter: {id: {eq: "cG9zdDoy"}}) {
+      nodes {
+        title
+        ustawienia {
+          ustawieniaTytulStrony
+          ustawieniaOpisStrony
+          ustawieniaKolorPrzewodni
+          ustawieniaKolorDodatkowy
         }
-      }
-      sponsorzy {
-        sponsorzyZdjecia {
-          sponsorzyZdjeciaZdjecie {
+        zdjecieGlowne {
+          zdjecieGlowneObraz {
             sourceUrl
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1216) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                fluid(maxWidth: 1896) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
           }
-          sponsorzyZdjeciaLink
         }
-      }
-      terminarz {
-        najblizszeMecze {
-          najblizszeMeczeData
-          najblizszeMeczeLista {
-            najblizszeMeczeListaMecz
-          }
-        }
-        ostatnieMecze {
-          ostatnieMeczeData
-          ostatnieMeczeLista {
-            ostatnieMeczeListaMecz
-            ostatnieMeczeListaWynik
-          }
-        }
-      }
-      uslugi {
-        uslugiUsluga {
-          uslugiIkona {
-            mediaDetails {
-              file
+        sponsorzy {
+          sponsorzyZdjecia {
+            sponsorzyZdjeciaZdjecie {
+              sourceUrl
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1216) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
             }
-            mediaItemUrl
-            sourceUrl
+            sponsorzyZdjeciaLink
           }
-          uslugiOpis
-          uslugiLink
+        }
+        terminarz {
+          najblizszeMecze {
+            najblizszeMeczeData
+            najblizszeMeczeLista {
+              najblizszeMeczeListaMecz
+            }
+          }
+          ostatnieMecze {
+            ostatnieMeczeData
+            ostatnieMeczeLista {
+              ostatnieMeczeListaMecz
+              ostatnieMeczeListaWynik
+            }
+          }
+        }
+        uslugi {
+          uslugiUsluga {
+            uslugiIkona {
+              mediaDetails {
+                file
+              }
+              mediaItemUrl
+              sourceUrl
+            }
+            uslugiOpis
+            uslugiLink
+          }
         }
       }
     }
