@@ -13,7 +13,6 @@ import Contact from "../atomic/sections/homepage/contact"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    {console.log(data)}
     <Seo title={data.allWpPage.nodes[0].ustawienia.ustawieniaTytulStrony} />
     <Top data={data.allWpPage.nodes[0].zdjecieGlowne} />
     <Articles data={data.allWpPage.nodes[0].sponsorzy} />

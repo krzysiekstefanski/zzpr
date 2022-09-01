@@ -12,6 +12,7 @@ const Paragraph = styled.p`
   padding-right: ${props => (props.pr ? (props.pr === "auto" ? "auto" : `${props.pr}`) : "")};
   margin: ${props => props.m ? props.m : text.margin ? text.margin : "" };
   margin-bottom: ${props => (props.mb ? (props.mb === "auto" ? "auto" : `${props.mb}`) : "")};
+  white-space: ${props => (props.nowrap ? "nowrap" : "")};
   
   @media (min-width: 769px) {
     text-align: ${props => (props.centerMD ? "center" : props.alignMD ? props.alignMD : "")};
@@ -35,8 +36,8 @@ const Paragraph = styled.p`
   }
 `;
 
-const Text = ({ className, text, children, typography, linkTypography, color, center, align, alignMD, pl, pr, m, mb, mbMD }) => (
-  <Paragraph className={className} typography={typography} linkTypography={linkTypography} color={color} center={center} align={align} alignMD={alignMD} pl={pl} pr={pr} m={m} mb={mb} mbMD={mbMD}>
+const Text = ({ className, text, children, typography, linkTypography, color, center, align, alignMD, nowrap, pl, pr, m, mb, mbMD }) => (
+  <Paragraph className={className} typography={typography} linkTypography={linkTypography} color={color} center={center} align={align} alignMD={alignMD} nowrap={nowrap} pl={pl} pr={pr} m={m} mb={mb} mbMD={mbMD}>
     { text ? parse(text) : null }
     { children ? parse(children) : null }
   </Paragraph>

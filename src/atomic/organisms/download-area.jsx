@@ -10,12 +10,13 @@ import FileSave from "../molecules/file-save";
 
 const Wrapper = styled.div`
   width: 100%;
+  margin-bottom: ${props => (props.mb ? props.mb : "")};
 `
 
-const DownloadArea = ({ data }) => (
-    <Wrapper>
+const DownloadArea = ({ data, mb }) => (
+    <Wrapper mb={mb}>
         <Heading mb="24px">Pliki do pobrania</Heading>
-        {data.pliki.map((plik, i, arr) => (
+        {data.map((plik, i, arr) => (
             i + 1 !== arr.length ? <FileSave data={plik} mb="24px" /> : <FileSave data={plik} />
         ))}
     </Wrapper>

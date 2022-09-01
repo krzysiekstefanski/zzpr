@@ -8,13 +8,19 @@ import Grid from "../../components/grid"
 import SectionTitle from "../../atomic/atoms/section-title";
 import { FlexBox } from "../../components/flexbox";
 import DownloadArea from "../../atomic/organisms/download-area";
+import ClubCard from "../../atomic/molecules/club-card";
 
 const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle title="Wydarzenia" p="250px 0 0 0" mb="48px" />
-      <DownloadArea data={data.allWpPage.nodes[0].plikiDoPobrania.plikiLista} mb="48px" />
+      <SectionTitle title="Kluby" p="250px 0 0 0" mb="48px" />
+      <Grid columns="25% 25% 25% 25%" gap="24px" mb="120px">
+        {data.allWpPage.nodes[0].kluby.klubyLista.map((klub) => (
+          <ClubCard data={klub} />
+        ))};
+      </Grid>
+      <DownloadArea data={data.allWpPage.nodes[0].kluby.klubyLista} mb="48px" />
     </Container>
   </Layout>
 )
@@ -22,7 +28,7 @@ const NewsPage = ({ data }) => (
 export default NewsPage
 
 export const pageQuery = graphql`
-  query WordpressEvents {
+  query WordpressClubs {
     wpPage(id: {eq: "cG9zdDoy"}) {
       ustawienia {
         ustawieniaTytulStrony
@@ -31,11 +37,14 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDo1NzI="}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDo1ODQ="}}) {
       nodes {
         title
-        plikiDoPobrania {
-          plikiLista {
+        kluby {
+          klubyLista {
+            klubyListaFacebook
+            klubyListaNazwa
+            klubyListaWebsite
             plik {
               localFile {
                 ext

@@ -48,17 +48,9 @@ const Badge = styled.span`
 
 const CardTeam = ({ data, icon, dataId }) => (
   <Employer column maxWidth="260" prMD="40px" data-id={dataId}>
-    {console.log(data)}
-    
     <Image>
     {data.kadraKategoriaZdjecie ?
       <Img fixed={data.kadraKategoriaZdjecie.localFile.childImageSharp.fluid} /> : 
-    // <StaticImage
-    //   src="../../images/avatar-green.png"
-    //   quality={85}
-    //   formats={["AUTO", "WEBP", "AVIF"]}
-    //   alt="A Gatsby astronaut"
-    // />
     <AvatarSVG />}
     </Image>
     {data.kadraKategoriaImie ? <SectionTitle size="4" typography={typography.heading} p="0" mb="8px">{data.kadraKategoriaImie}</SectionTitle> : null}
