@@ -22,28 +22,31 @@ const Wrapper = styled(FlexBox)`
     .article-title {
         max-width: 100%;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        display: ${props => (props.nowrap ? "" : " -webkit-box")};
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: ${props => (props.nowrap ? "nowrap" : "")};
         overflow: hidden;
     }
 
     .article-content {
         max-height: 72px;
-        overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 `
 
-const Article = ({ data, icon, dataId, date, title, text, link }) => (
-    <Wrapper column data-id={dataId}>
+const Article = ({ data, icon, dataId, nowrap, date, title, text, link }) => (
+    <Wrapper column data-id={dataId} nowrap={nowrap}>
         <Text typography={typography.bodyS} mb="10px">{date}</Text>
         {/* <FlexBox column maxHeight=""> */}
         <Heading className="article-title" color={color.white} mb="10px">{title}</Heading>
-        <Text className="article-content" typography={typography.bodyM} mb="auto">{text}</Text>
+        <Text className="article-content" typography={typography.bodyM} mb="26px">{text}</Text>
         {/* </FlexBox> */}
-        <Link href={link}>Czytaj dalej</Link>
+        <Link href={link} mt="auto">Czytaj dalej</Link>
     </Wrapper>
 )
 

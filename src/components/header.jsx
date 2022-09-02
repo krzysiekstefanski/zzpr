@@ -7,6 +7,12 @@ import { color } from "./colors"
 import Container from "../atomic/partials/container"
 import { menu } from "./general-config"
 import LogoSVG from "../images/logo-zzpr.inline.svg"
+import AwardSVG from "../images/award.inline.svg"
+import DocumentSVG from "../images/document.inline.svg"
+import DashboardSVG from "../images/dashboard.inline.svg"
+import ChatSVG from "../images/chat.inline.svg"
+import ArrowDownSVG from "../images/arrow-down.inline.svg"
+
 
 const CustomHeader = styled.header`
   display: flex;
@@ -33,27 +39,15 @@ const CustomHeader = styled.header`
 
   &.alt {
     background-color: ${menu.backgroundColor ? menu.backgroundColor[1] : ""};
+    border-bottom: ${menu.borderBottom ? menu.borderBottom[1] : ""};
     padding: 16px 0;
 
     .hamburger span {
       background-color: ${menu.hamburgerColor ? menu.hamburgerColor[0] : ""};
     }
 
-    nav {
-      transform: translateY(-32px);
-
-      @media (min-width: 992px) {
-        border-bottom-width: 0;
-        transform: translateY(0);
-      }
-    }
-
     .logo {
       color: #fff;
-    }
-
-    ul {
-      display: flex;
     }
   }
 `
@@ -71,15 +65,83 @@ const LogoWrapper = styled(Link)`
   mix-blend-mode: lighten;
 
   @media (min-width: 576px) {
-    max-width: 140px;
+    max-width: 200px;
   }
 
   @media (min-width: 992px) {
-    max-width: 207px;
+    max-width: 308px;
   }
 
-  span {
-    font-size: 32px;
+  svg {
+    width: 100%;
+  }
+`
+
+const TopNav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+
+const TopNavList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1192px;
+  list-style: none;
+  margin: 0 24px;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
+
+  & > li {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+
+  li {
+    
+
+    a {
+      display: flex;
+      align-items: center;
+      ${menu.typography ? menu.typography : null}
+      color: ${menu.color[0]};
+      text-transform: ${menu.textTransform ? menu.textTransform : ""};
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      position: relative;
+      cursor: pointer;
+
+      svg {
+        &:first-child {
+          margin-right: 8px;
+        }
+
+        &.arrow-down {
+          transform: translateY(-1px);
+          margin-left: 8px;
+        }
+
+        path {
+          transition: fill 0.3s ease;
+        }
+      }
+
+      &:hover {
+        color: ${menu.colorHover[0]};
+
+        svg path {
+          fill:  ${menu.colorHover[0]};
+        }
+      }
+    }
   }
 `
 
@@ -115,7 +177,6 @@ const NavList = styled.ul`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1192px;
   list-style: none;
   padding: 32px 15px;
   margin: 0 auto;
@@ -124,8 +185,12 @@ const NavList = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     border-top: 1px solid ${color.neutral20};
-    padding: 8px 0 0;
+    padding: 8px 24px 0;
     margin: 16px auto 0;
+  }
+
+  & > li {
+    position: relative;
   }
 
   li {
@@ -148,9 +213,23 @@ const NavList = styled.ul`
       padding: 8px;
       transition: color 0.3s ease, background-color 0.3s ease;
       position: relative;
+      cursor: pointer;
+
+      svg {
+        transform: translateY(-1px);
+        margin-left: 8px;
+
+        path {
+          transition: fill 0.3s ease;
+        }
+      }
 
       &:hover {
         color: ${menu.colorHover[0]};
+
+        svg path {
+          fill:  ${menu.colorHover[0]};
+        }
       }
     }
   }
@@ -159,6 +238,31 @@ const NavList = styled.ul`
     height: 24px;
     border: 0;
     border-right: 1px solid ${color.neutral20};
+  }
+`
+
+const SubMenu = styled.ul`
+  display: none;
+  flex-direction: column;
+  background-color: ${color.black};
+  list-style: none;
+  padding: 16px;
+  position: absolute;
+  top: 36px;
+  left: -16px;
+  z-index: 1;
+
+  &.contact {
+    left: auto;
+    right: -16px;
+  }
+
+  &.active {
+    display: flex;
+  }
+
+  a {
+    padding: 8px;
   }
 `
 
@@ -228,36 +332,50 @@ const Header = ({ siteTitle }) => {
     const hero = document.querySelector(".top-overlay")
     const header = document.querySelector(".header")
 
-    if (hero) {
-      const heroSize = hero.offsetHeight / 10
+    // if (hero) {
+    const heroSize = hero.offsetHeight / 10
 
+    if (document.documentElement.scrollTop > heroSize) {
+      header.classList.add("alt")
+    } else {
+      header.classList.remove("alt")
+    }
+
+    window.onscroll = () => {
+      console.log(heroSize)
+      console.log(document.documentElement.scrollTop)
       if (document.documentElement.scrollTop > heroSize) {
         header.classList.add("alt")
       } else {
         header.classList.remove("alt")
       }
-
-      window.onscroll = () => {
-        if (document.documentElement.scrollTop > heroSize) {
-          header.classList.add("alt")
-        } else {
-          header.classList.remove("alt")
-        }
-      }
-    } else {
-      header.classList.add("alt")
     }
+    // } else {
+    //   console.log("alt")
+    //   header.classList.add("alt")
+    // }
   })
 
   const handleClick = e => {
+    console.log(e.target)
     e.target.closest("button").classList.toggle("active")
     setHamburgerIsActive(!hamburgerIsActive)
   }
 
   const handleMenuItemClick = e => {
+    console.log(e.target)
     e.target.closest("ul").parentElement.classList.remove("active")
-    e.target.closest("ul").parentElement.previousSibling.classList.remove("active")
+    e.target.closest("ul").parentElement.previousSibling?.classList.remove("active")
     setHamburgerIsActive(!hamburgerIsActive)
+
+    if (e.target.closest("a").nextSibling) {
+      document.querySelectorAll('.header ul').forEach(function (list) {
+        if (list !== e.target.closest("a").nextSibling) {
+          list.classList.remove("active")
+        }
+      })
+      e.target.closest("a").nextSibling.classList.toggle("active")
+    }
   }
 
   return (
@@ -266,6 +384,30 @@ const Header = ({ siteTitle }) => {
         <LogoWrapper className="logo" to="/">
           <LogoSVG />
         </LogoWrapper>
+        <TopNav aria-label="secondary">
+          <TopNavList>
+            <li>
+              <a onClick={e => handleMenuItemClick(e)}><AwardSVG />ZZPR<ArrowDownSVG className="arrow-down" /></a>
+              <SubMenu>
+                <li>
+                  <Link to="/zzpr" onClick={e => handleMenuItemClick(e)}>ZZPR</Link>
+                </li>
+                <li>
+                  <Link to="/historia" onClick={e => handleMenuItemClick(e)}>Historia</Link>
+                </li>
+              </SubMenu>
+            </li>
+            <li>
+              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e)}><DocumentSVG />Regulaminy i przepisy</Link>
+            </li>
+            <li>
+              <Link to="/rozgrzewki" onClick={e => handleMenuItemClick(e)}><DashboardSVG />Rozgrzewki</Link>
+            </li>
+            <li>
+              <Link to="/kontakt" onClick={e => handleMenuItemClick(e)}><ChatSVG />Kontakt</Link>
+            </li>
+          </TopNavList>
+        </TopNav>
       </Container>
       <Container position="static">
         <Hamburger
@@ -276,7 +418,7 @@ const Header = ({ siteTitle }) => {
           <span />
           <span />
         </Hamburger>
-        <Navigation className={hamburgerIsActive ? "active" : "hidden"}>
+        <Navigation className={hamburgerIsActive ? "active" : "hidden"} aria-label="primary">
           <NavList>
             <li>
               <Link to="/news" onClick={e => handleMenuItemClick(e)}>News</Link>
@@ -291,11 +433,27 @@ const Header = ({ siteTitle }) => {
             </li>
             <hr />
             <li>
-              <Link to="/kadry" onClick={e => handleMenuItemClick(e)}>Kadry</Link>
+              <a onClick={e => handleMenuItemClick(e)}>Kadry<ArrowDownSVG className="arrow-down" /></a>
+              <SubMenu>
+                <li>
+                  <Link to="/kadry-chlopcy" onClick={e => handleMenuItemClick(e)}>Kadry - Chłopcy</Link>
+                </li>
+                <li>
+                  <Link to="/kadry-dziewczeta" onClick={e => handleMenuItemClick(e)}>Kadry - Dziewczęta</Link>
+                </li>
+              </SubMenu>
             </li>
             <hr />
             <li>
-              <Link to="/trenerzy" onClick={e => handleMenuItemClick(e)}>Trenerzy</Link>
+              <a onClick={e => handleMenuItemClick(e)}>Trenerzy<ArrowDownSVG className="arrow-down" /></a>
+              <SubMenu>
+                <li>
+                  <Link to="/trenerzy" onClick={e => handleMenuItemClick(e)}>Trenerzy</Link>
+                </li>
+                <li>
+                  <Link to="/ospr" onClick={e => handleMenuItemClick(e)}>OSPR</Link>
+                </li>
+              </SubMenu>
             </li>
             <hr />
             <li>
@@ -311,7 +469,18 @@ const Header = ({ siteTitle }) => {
             </li>
             <hr />
             <li>
-              <Link to="/galerie" onClick={e => handleMenuItemClick(e)}>Galerie</Link>
+              <a onClick={e => handleMenuItemClick(e)}>Galerie<ArrowDownSVG className="arrow-down" /></a>
+              <SubMenu className="contact">
+                <li>
+                  <Link to="/kadry" onClick={e => handleMenuItemClick(e)}>Kadry</Link>
+                </li>
+                <li>
+                  <Link to="/konferencje" onClick={e => handleMenuItemClick(e)}>Konferencje</Link>
+                </li>
+                <li>
+                  <Link to="/puchar-zzpr" onClick={e => handleMenuItemClick(e)}>Puchar ZZPR</Link>
+                </li>
+              </SubMenu>
             </li>
           </NavList>
         </Navigation>

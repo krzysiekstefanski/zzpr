@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import Container from "../../partials/container";
 import { color } from "../../../components/colors"
 import Button from "../../atoms/button";
-import Heading from "../../atoms/section-title";
+import Heading from "../../atoms/top-title";
 import Text from "../../atoms/text";
 import { typography } from "../../../components/typography"
 
@@ -24,7 +24,7 @@ const HomepageTopSection = ({ data }) => (
             }}
             radius="27px"
             p="14px 53px"
-            m="0 auto 70px 0"
+            m="0 auto 0 0"
           />
         </Content>
         <TopImage>
@@ -51,7 +51,7 @@ const Overlay = styled.div`
   .top-content {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
 
@@ -70,7 +70,7 @@ const Content = styled.div`
   @media (min-width: 769px) {
     width: 50%;
     max-width: 610px;
-    padding: 150px 0 100px;
+    padding: 90px 0 110px;
     marign-right: auto;
   }
 `;

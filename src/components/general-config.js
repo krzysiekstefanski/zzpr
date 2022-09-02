@@ -7,10 +7,26 @@ export const menu =  {
     color: [color.white, color.white],
     colorHover: [color.red40, color.red40],
     fontBackgroundColor: [color.white, color.blue100],
-    borderBottom: [ `1px solid rgba(255, 255, 255, 0.2)`, `1px solid ${color.neutral80}`],
+    borderBottom: [ ``, `1px solid ${color.neutral20}`],
     hamburgerColor: [color.blue40, color.blue40],
     navigationColor: [color.red00, color.blue40],
     textTransform: "",
+}
+
+export const topHeader = {
+    size: 2,
+    typography: [typography.h900, typography.h600, typography.h500],
+    color: color.white,
+    secondaryColor: color.white,
+    upperline: false,
+    underline: false,
+    lineHeight: "1px",
+    lineWidth: "100%",
+    lineColor: color.neutral40,
+    textTransform: "",
+    padding: "0 0 8px",
+    margin: "",
+    position: "relative",
 }
 
 export const header = {
@@ -23,7 +39,7 @@ export const header = {
     lineHeight: "1px",
     lineWidth: "100%",
     lineColor: color.neutral40,
-    textTransform: "",
+    textTransform: "uppercase",
     padding: "0 0 8px",
     margin: "",
     position: "relative",

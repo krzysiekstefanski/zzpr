@@ -57,12 +57,7 @@ const settings = {
 
 
 const Articles = styled.section`
-    padding: 48px 0 0;
     position: relative;
-
-    @media (min-width: 769px) {
-    padding: 80px 0;
-    }
 
     .slick-list {
         overflow: visible;
@@ -122,7 +117,7 @@ const ArticlesSection = ({ className, data }) => (
             <Heading mb="24px">Ogłoszenia</Heading>
             <Slider {...settings}>
                 <SlideWrapper>
-                    <Article date="16.08.2022" title="KURSOKONFERENCJA TRENERSKA - LICENCJA C - 03-04.08.2022 R." text="Zachodniopomorski Związek Piłki Ręcznej w Szczecinie informuje , iż w dniach 03-04.09.2022r. jest organizatorem szkoleniowej kursokonferencji piłki ręcznej dla instruktorów i trenerów na licencję „C” na sezon 2022/2023." link="./news/kursokonferencja-trenerska-licencja-c-03-04082022-r" />
+                    <Article nowrap date="16.08.2022" title="KURSOKONFERENCJA TRENERSKA - LICENCJA C - 03-04.08.2022 R." text="Zachodniopomorski Związek Piłki Ręcznej w Szczecinie informuje , iż w dniach 03-04.09.2022r. jest organizatorem szkoleniowej kursokonferencji piłki ręcznej dla instruktorów i trenerów na licencję „C” na sezon 2022/2023." link="./news/kursokonferencja-trenerska-licencja-c-03-04082022-r" />
                 </SlideWrapper>
                 <SlideWrapper>
                     <Article date="aaa" title="aaa" text="aaa" link="aaa" />
