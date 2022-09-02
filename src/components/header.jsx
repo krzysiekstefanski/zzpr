@@ -332,22 +332,23 @@ const Header = ({ siteTitle }) => {
     const hero = document.querySelector(".top-overlay")
     const header = document.querySelector(".header")
 
-    // if (hero) {
-    const heroSize = hero.offsetHeight / 10
+    if (hero) {
+      const heroSize = hero.offsetHeight / 10
 
-    if (document.documentElement.scrollTop > heroSize) {
-      header.classList.add("alt")
-    } else {
-      header.classList.remove("alt")
-    }
-
-    window.onscroll = () => {
-      console.log(heroSize)
-      console.log(document.documentElement.scrollTop)
       if (document.documentElement.scrollTop > heroSize) {
         header.classList.add("alt")
       } else {
         header.classList.remove("alt")
+      }
+
+      window.onscroll = () => {
+        console.log(heroSize)
+        console.log(document.documentElement.scrollTop)
+        if (document.documentElement.scrollTop > heroSize) {
+          header.classList.add("alt")
+        } else {
+          header.classList.remove("alt")
+        }
       }
     }
     // } else {
