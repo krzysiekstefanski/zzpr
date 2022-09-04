@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { color } from "../components/colors"
 import { footer } from "../components/general-config"
-import LogoSVG from "../images/logo-zzpr.inline.svg"
+import LogoSVG from "../images/logo-czarne-zzpr.inline.svg"
 import Container from "../atomic/partials/container"
 
 const Wrapper = styled.footer`
@@ -46,6 +46,10 @@ const LogoWrapper = styled(Link)`
 
   span {
     font-size: 32px;
+  }
+
+  svg {
+    background-color: ${color.white};
   }
 `
 

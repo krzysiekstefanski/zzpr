@@ -1,28 +1,29 @@
 import * as React from "react"
 import styled from "styled-components";
 import { graphql } from "gatsby"
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
-import Container from "../../atomic/partials/container";
-import Grid from "../../components/grid"
-import SectionTitle from "../../atomic/atoms/section-title";
-import { FlexBox } from "../../components/flexbox";
-import DownloadArea from "../../atomic/organisms/download-area";
+import Layout from "../../../components/layout"
+import Seo from "../../../components/seo"
+import Container from "../../../atomic/partials/container";
+import Grid from "../../../components/grid"
+import Text from "../../../atomic/atoms/text";
+import SectionTitle from "../../../atomic/atoms/section-title";
+import { FlexBox } from "../../../components/flexbox";
+import DownloadArea from "../../../atomic/organisms/download-area";
 
-const NewsPage = ({ data }) => (
+const PucharPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Wydarzenia" p="320px 0 0 0" mb="48px" />
-      <DownloadArea data={data.allWpPage.nodes[0].plikiDoPobrania.plikiLista} mb="48px" />
+      <SectionTitle className="top-overlay" title="Galerie - Puchar ZZPR" p="320px 0 0 0" mb="48px" />
+      <Text>Strona w trakcie budowy</Text>
     </Container>
   </Layout>
 )
 
-export default NewsPage
+export default PucharPage
 
 export const pageQuery = graphql`
-  query WordpressEvents {
+  query WordpressPuchar {
     wpPage(id: {eq: "cG9zdDoy"}) {
       ustawienia {
         ustawieniaTytulStrony

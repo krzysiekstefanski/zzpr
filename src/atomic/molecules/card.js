@@ -21,7 +21,7 @@ const Employer = styled(FlexBox)`
   }
 `
 
-const Card = ({ data, icon, dataId }) => (
+const Card = ({ data, dataId }) => (
   <Employer column center data-id={dataId}>
     <Icon size="64px" mb="16px">
       <img src={data.uslugiIkona.sourceUrl} />

@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { color } from "./colors"
 import Container from "../atomic/partials/container"
 import { menu } from "./general-config"
-import LogoSVG from "../images/logo-zzpr.inline.svg"
+import LogoSVG from "../images/logo-czarne-zzpr.inline.svg"
 import AwardSVG from "../images/award.inline.svg"
 import DocumentSVG from "../images/document.inline.svg"
 import DashboardSVG from "../images/dashboard.inline.svg"
@@ -54,26 +54,18 @@ const CustomHeader = styled.header`
 
 const LogoWrapper = styled(Link)`
   width: 100%;
-  //position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: Albert Sans, sans-serif;
-  color: ${menu.navigationColor ? menu.navigationColor[1] : ""};
-  font-size: 18px;
-  line-height: 1;
-  font-weight: 700;
   mix-blend-mode: lighten;
 
   @media (min-width: 576px) {
-    max-width: 200px;
+    max-width: 250px;
   }
 
   @media (min-width: 992px) {
-    max-width: 308px;
+    max-width: 350px;
   }
 
   svg {
-    width: 100%;
+    background-color: ${color.white};
   }
 `
 
@@ -244,11 +236,11 @@ const NavList = styled.ul`
 const SubMenu = styled.ul`
   display: none;
   flex-direction: column;
-  background-color: ${color.black};
+  background-color: ${color.neutral00};
   list-style: none;
   padding: 16px;
   position: absolute;
-  top: 36px;
+  top: 45px;
   left: -16px;
   z-index: 1;
 
@@ -342,8 +334,6 @@ const Header = ({ siteTitle }) => {
       }
 
       window.onscroll = () => {
-        console.log(heroSize)
-        console.log(document.documentElement.scrollTop)
         if (document.documentElement.scrollTop > heroSize) {
           header.classList.add("alt")
         } else {
@@ -351,10 +341,6 @@ const Header = ({ siteTitle }) => {
         }
       }
     }
-    // } else {
-    //   console.log("alt")
-    //   header.classList.add("alt")
-    // }
   })
 
   const handleClick = e => {
@@ -399,10 +385,10 @@ const Header = ({ siteTitle }) => {
               </SubMenu>
             </li>
             <li>
-              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e)}><DocumentSVG />Regulaminy i przepisy</Link>
+              <Link to="/rozgrywki" onClick={e => handleMenuItemClick(e)}><DashboardSVG />Rozgrywki</Link>
             </li>
             <li>
-              <Link to="/rozgrzewki" onClick={e => handleMenuItemClick(e)}><DashboardSVG />Rozgrzewki</Link>
+              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e)}><DocumentSVG />Regulaminy i przepisy</Link>
             </li>
             <li>
               <Link to="/kontakt" onClick={e => handleMenuItemClick(e)}><ChatSVG />Kontakt</Link>
@@ -437,10 +423,10 @@ const Header = ({ siteTitle }) => {
               <a onClick={e => handleMenuItemClick(e)}>Kadry<ArrowDownSVG className="arrow-down" /></a>
               <SubMenu>
                 <li>
-                  <Link to="/kadry-chlopcy" onClick={e => handleMenuItemClick(e)}>Kadry - Chłopcy</Link>
+                  <Link to="/kadry/chlopcy" onClick={e => handleMenuItemClick(e)}>Kadry - Chłopcy</Link>
                 </li>
                 <li>
-                  <Link to="/kadry-dziewczeta" onClick={e => handleMenuItemClick(e)}>Kadry - Dziewczęta</Link>
+                  <Link to="/kadry/dziewczeta" onClick={e => handleMenuItemClick(e)}>Kadry - Dziewczęta</Link>
                 </li>
               </SubMenu>
             </li>
@@ -466,20 +452,20 @@ const Header = ({ siteTitle }) => {
             </li>
             <hr />
             <li>
-              <Link to="/plazowa" onClick={e => handleMenuItemClick(e)}>Ręczna plażowa</Link>
+              <Link to="/pilka-reczna-plazowa" onClick={e => handleMenuItemClick(e)}>Ręczna plażowa</Link>
             </li>
             <hr />
             <li>
               <a onClick={e => handleMenuItemClick(e)}>Galerie<ArrowDownSVG className="arrow-down" /></a>
               <SubMenu className="contact">
                 <li>
-                  <Link to="/kadry" onClick={e => handleMenuItemClick(e)}>Kadry</Link>
+                  <Link to="/galerie/kadry" onClick={e => handleMenuItemClick(e)}>Kadry</Link>
                 </li>
                 <li>
-                  <Link to="/konferencje" onClick={e => handleMenuItemClick(e)}>Konferencje</Link>
+                  <Link to="/galerie/konferencje" onClick={e => handleMenuItemClick(e)}>Konferencje</Link>
                 </li>
                 <li>
-                  <Link to="/puchar-zzpr" onClick={e => handleMenuItemClick(e)}>Puchar ZZPR</Link>
+                  <Link to="/galerie/puchar-zzpr" onClick={e => handleMenuItemClick(e)}>Puchar ZZPR</Link>
                 </li>
               </SubMenu>
             </li>

@@ -97,6 +97,12 @@ const Articles = styled.section`
             padding-top: 256.8%;
         }
     }
+
+    .sponsors {
+        img {
+            object-fit: contain !important;
+        }
+    }
 `
 
 const Anchor = styled.span`
@@ -111,7 +117,7 @@ const SlideWrapper = styled.div`
 
 
 const ArticlesSection = ({ className, data }) => (
-    <Articles className={className}>
+    <Articles className={className} imageWidth={data.sponsorzyZdjecia.length}>
         <Anchor id="wydarzenia" />
         <Container>
             <Heading mb="24px">Ogłoszenia</Heading>
@@ -135,9 +141,10 @@ const ArticlesSection = ({ className, data }) => (
                     <Article date="aaa" title="aaa" text="aaa" link="aaa" />
                 </SlideWrapper>
             </Slider>
-            <Grid columns="1fr 1fr" gap="24px" width="100%" m="172px 0 0">
+            <Grid className="sponsors" columns={`repeat(${data.sponsorzyZdjecia.length}, minmax(25%, calc(50% - 12px)))`} gap="24px" justify="center" width="100%" m="172px 0 0">
                 {data.sponsorzyZdjecia.map((zdjecie) => (
                     <a href={zdjecie.sponsorzyZdjeciaLink ? zdjecie.sponsorzyZdjeciaLink : null} target="_blank">
+                        {console.log(data.sponsorzyZdjecia.length)}
                         <FlexBox className="content-left" hidden showMD height="409px" width="100%" relative >
                             <Img fixed={zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp.fluid} />
                         </FlexBox>

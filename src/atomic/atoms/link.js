@@ -23,7 +23,7 @@ const Wrapper = styled.a`
   }
 
   &:hover {
-    color: ${color.blue60};
+    color: ${color.red40};
   }
 `;
 

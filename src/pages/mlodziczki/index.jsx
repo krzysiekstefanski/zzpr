@@ -5,24 +5,25 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
 import Grid from "../../components/grid"
+import Text from "../../atomic/atoms/text";
 import SectionTitle from "../../atomic/atoms/section-title";
 import { FlexBox } from "../../components/flexbox";
 import DownloadArea from "../../atomic/organisms/download-area";
 
-const NewsPage = ({ data }) => (
+const MlodziczkiPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Wydarzenia" p="320px 0 0 0" mb="48px" />
-      <DownloadArea data={data.allWpPage.nodes[0].plikiDoPobrania.plikiLista} mb="48px" />
+      <SectionTitle className="top-overlay" title="Młodziczki" p="320px 0 0 0" mb="48px" />
+      <Text>Strona w trakcie budowy</Text>
     </Container>
   </Layout>
 )
 
-export default NewsPage
+export default MlodziczkiPage
 
 export const pageQuery = graphql`
-  query WordpressEvents {
+  query WordpressMlodziczki {
     wpPage(id: {eq: "cG9zdDoy"}) {
       ustawienia {
         ustawieniaTytulStrony

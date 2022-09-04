@@ -17,7 +17,7 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="News" p="250px 0 0 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="News" p="320px 0 0 0" mb="48px" />
       <Grid columns="33% 33% 33%" gap="30px" mb="100px">
         <ArticleWrapper>
           <Article date="16.08.2022" title="KURSOKONFERENCJA TRENERSKA - LICENCJA C - 03-04.08.2022 R." text="Zachodniopomorski Związek Piłki Ręcznej w Szczecinie informuje , iż w dniach 03-04.09.2022r. jest organizatorem szkoleniowej kursokonferencji piłki ręcznej dla instruktorów i trenerów na licencję „C” na sezon 2022/2023." link="./news/kursokonferencja-trenerska-licencja-c-03-04082022-r" />

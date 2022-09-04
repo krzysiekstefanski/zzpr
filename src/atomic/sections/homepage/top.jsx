@@ -46,7 +46,7 @@ const Top = styled.section`
 const Overlay = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 10vw;
+  padding-top: 13vw;
 
   .top-content {
     flex-grow: 1;

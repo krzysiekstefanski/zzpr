@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: ${props => (props.columns ? props.columns : "")};
   grid-gap: ${props => (props.gap ? props.gap : "")};
+  justify-content: ${props => (props.justify ? props.justify : "")};
   width: ${props => (props.width ? props.width : "")};
   max-width: ${props => (props.maxWidth ? props.maxWidth : "")};
   padding: ${props => margin(props.p ? props.p : "")};

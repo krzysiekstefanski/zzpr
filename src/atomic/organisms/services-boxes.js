@@ -25,7 +25,7 @@ const ServicesBoxes = ({ data }) => (
         <Grid columns="1fr 1fr 1fr 1fr 1fr 1fr" gap="24px" width="100%" m="48px auto 85px">
             {data.uslugiUsluga.map((usluga, i) => (
                 <Link to={`/${usluga.uslugiLink}`}>
-                <Card data={usluga} icon={<DoctorSVG />} dataId={i} />
+                <Card data={usluga} dataId={i} />
                 </Link>
             ))}
         </Grid>
