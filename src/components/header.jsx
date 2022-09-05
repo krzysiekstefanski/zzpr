@@ -47,7 +47,7 @@ const CustomHeader = styled.header`
     }
 
     .logo {
-      color: #fff;
+      color: ${color.white};
     }
   }
 `
@@ -55,6 +55,17 @@ const CustomHeader = styled.header`
 const LogoWrapper = styled(Link)`
   width: 100%;
   mix-blend-mode: lighten;
+  position: relative;
+
+  &::before {
+    content: '';
+    border: 2px solid ${color.black};
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   @media (min-width: 576px) {
     max-width: 250px;
