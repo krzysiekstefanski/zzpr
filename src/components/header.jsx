@@ -59,7 +59,7 @@ const LogoWrapper = styled(Link)`
 
   &::before {
     content: '';
-    border: 2px solid ${color.black};
+    border: 8px solid ${color.black};
     position: absolute;
     top: 0;
     left: 0;
