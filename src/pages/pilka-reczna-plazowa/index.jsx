@@ -1,6 +1,7 @@
 import * as React from "react"
-import styled from "styled-components";
 import { graphql } from "gatsby"
+import styled from "styled-components";
+import parse from "html-react-parser"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
@@ -10,12 +11,24 @@ import SectionTitle from "../../atomic/atoms/section-title";
 import { FlexBox } from "../../components/flexbox";
 import DownloadArea from "../../atomic/organisms/download-area";
 
+const Content = styled.div`
+  margin-bottom: 32px;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 32px;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
+`
+
 const PlazowaPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle className="top-overlay" title="Piłka ręczna plażowa" p="320px 0 0 0" mb="48px" />
-      <Text>Strona w trakcie budowy</Text>
+      <Content>{parse(data.allWpPage.nodes[0].content)}</Content>
     </Container>
   </Layout>
 )
@@ -35,6 +48,7 @@ export const pageQuery = graphql`
     allWpPage(filter: {id: {eq: "cG9zdDo1NzI="}}) {
       nodes {
         title
+        content
         plikiDoPobrania {
           plikiLista {
             plik {
