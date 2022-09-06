@@ -45,23 +45,10 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDo1NzI="}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDo4MDg="}}) {
       nodes {
         title
         content
-        plikiDoPobrania {
-          plikiLista {
-            plik {
-              localFile {
-                ext
-                publicURL
-                url
-                name
-                size
-              }
-            }
-          }
-        }
       }
     }
   }
