@@ -1,22 +1,11 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Container from "../../partials/container"
 import Article from "../../molecules/article"
-import Img from "gatsby-image"
-import { StaticImage } from "gatsby-plugin-image"
 import { color } from "../../../components/colors"
-import { FlexBox } from "../../../components/flexbox"
-import Grid from "../../../components/grid"
-import SectionTitle from "../../atoms/section-title";
-import Text from "../../atoms/text";
-import Icon from "../../atoms/icon";
-import HexesSVG from "../../../images/hexes.inline.svg"
-import DotsSVG from "../../../images/dots.inline.svg"
-import CrossSVG from "../../../images/cross.inline.svg"
 import Heading from "../../atoms/heading";
 
 const settings = {
@@ -117,42 +106,18 @@ const SlideWrapper = styled.div`
 
 
 const ArticlesSection = ({ className, data }) => (
-    <Articles className={className} imageWidth={data.sponsorzyZdjecia.length}>
+    <Articles className={className}>
         <Anchor id="wydarzenia" />
         <Container>
             <Heading mb="24px">Ogłoszenia</Heading>
             <Slider {...settings}>
-                <SlideWrapper>
-                    <Article nowrap date="16.08.2022" title="KURSOKONFERENCJA TRENERSKA - LICENCJA C - 03-04.08.2022 R." text="Zachodniopomorski Związek Piłki Ręcznej w Szczecinie informuje , iż w dniach 03-04.09.2022r. jest organizatorem szkoleniowej kursokonferencji piłki ręcznej dla instruktorów i trenerów na licencję „C” na sezon 2022/2023." link="./news/kursokonferencja-trenerska-licencja-c-03-04082022-r" />
-                </SlideWrapper>
-                <SlideWrapper>
-                    <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-                </SlideWrapper>
-                <SlideWrapper>
-                    <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-                </SlideWrapper>
-                <SlideWrapper>
-                    <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-                </SlideWrapper>
-                <SlideWrapper>
-                    <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-                </SlideWrapper>
-                <SlideWrapper>
-                    <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-                </SlideWrapper>
-            </Slider>
-            <Grid className="sponsors" columns={`repeat(${data.sponsorzyZdjecia.length}, minmax(25%, calc(50% - 12px)))`} gap="24px" justify="center" width="100%" m="172px 0 0">
-                {data.sponsorzyZdjecia.map((zdjecie) => (
-                    <a href={zdjecie.sponsorzyZdjeciaLink ? zdjecie.sponsorzyZdjeciaLink : null} target="_blank">
-                        {console.log(data.sponsorzyZdjecia.length)}
-                        <FlexBox className="content-left" hidden showMD height="409px" width="100%" relative >
-                            <Img fixed={zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp.fluid} />
-                        </FlexBox>
-                    </a>
+                {data.map((post) => (
+                    <SlideWrapper>
+                        <Article nowrap date={post.node.date} title={post.node.title} text={post.node.content} url={post.node.slug} />
+                    </SlideWrapper>
                 ))}
-            </Grid>
+            </Slider>
         </Container>
-        <StaticImage className="left-bg" src="../../../images/1.png" width="430px" />
     </Articles >
 )
 

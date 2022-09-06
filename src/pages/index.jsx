@@ -1,9 +1,10 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Top from "../atomic/sections/homepage/top";
 import Articles from "../atomic/sections/homepage/articles";
+import Sponsors from "../atomic/sections/homepage/sponsors";
 import Schedule from "../atomic/sections/homepage/schedule";
 import About from "../atomic/sections/homepage/about";
 import Info from "../atomic/sections/homepage/info";
@@ -15,7 +16,8 @@ const IndexPage = ({ data }) => (
   <Layout>
     <Seo title={data.allWpPage.nodes[0].ustawienia.ustawieniaTytulStrony} />
     <Top data={data.allWpPage.nodes[0].zdjecieGlowne} />
-    <Articles data={data.allWpPage.nodes[0].sponsorzy} />
+    <Articles data={data.allWpPost.edges} />
+    <Sponsors data={data.allWpPage.nodes[0].sponsorzy} />
     <Schedule data={data.allWpPage.nodes[0].terminarz} />
     {/* <About data={data.wpPage.oNas} /> */}
     {/* <Info data={data.wpPage.informacje} /> */}
@@ -92,6 +94,16 @@ export const pageQuery = graphql`
             uslugiOpis
             uslugiLink
           }
+        }
+      }
+    }
+    allWpPost(sort: { fields: [date] }) {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+          date(formatString: "DD-MM-YYYY")
         }
       }
     }

@@ -3,10 +3,11 @@ import styled from "styled-components"
 import parse from "html-react-parser"
 import Icon from "../atoms/icon"
 import Whitebox from "../atoms/white-box"
-import Link from "../atoms/link"
+import { Link } from "gatsby"
 import Heading from "../atoms/heading"
 import Text from "../atoms/text"
 import { color } from "../../components/colors"
+import { link } from "../../components/general-config"
 import { FlexBox } from "../../components/flexbox"
 import { typography } from "../../components/typography"
 
@@ -37,16 +38,28 @@ const Wrapper = styled(FlexBox)`
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
+    a {
+        ${link.typography}
+        color: ${color.white};
+        margin-top: auto;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: ${color.red40};
+        }
+    }
 `
 
-const Article = ({ data, icon, dataId, nowrap, date, title, text, link }) => (
+const Article = ({ data, icon, dataId, nowrap, date, title, text, url }) => (
     <Wrapper column data-id={dataId} nowrap={nowrap}>
         <Text typography={typography.bodyS} mb="10px">{date}</Text>
         {/* <FlexBox column maxHeight=""> */}
         <Heading className="article-title" color={color.white} mb="10px">{title}</Heading>
         <Text className="article-content" typography={typography.bodyM} mb="26px">{text}</Text>
         {/* </FlexBox> */}
-        <Link href={link} mt="auto">Czytaj dalej</Link>
+        <Link to={`/${url}`} className="article-">Czytaj dalej</Link>
     </Wrapper>
 )
 

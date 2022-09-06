@@ -19,24 +19,11 @@ const NewsPage = ({ data }) => (
     <Container>
       <SectionTitle className="top-overlay" title="News" p="320px 0 0 0" mb="48px" />
       <Grid columns="33% 33% 33%" gap="30px" mb="100px">
-        <ArticleWrapper>
-          <Article date="16.08.2022" title="KURSOKONFERENCJA TRENERSKA - LICENCJA C - 03-04.08.2022 R." text="Zachodniopomorski Związek Piłki Ręcznej w Szczecinie informuje , iż w dniach 03-04.09.2022r. jest organizatorem szkoleniowej kursokonferencji piłki ręcznej dla instruktorów i trenerów na licencję „C” na sezon 2022/2023." link="./news/kursokonferencja-trenerska-licencja-c-03-04082022-r" />
-        </ArticleWrapper>
-        <ArticleWrapper>
-          <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-        </ArticleWrapper>
-        <ArticleWrapper>
-          <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-        </ArticleWrapper>
-        <ArticleWrapper>
-          <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-        </ArticleWrapper>
-        <ArticleWrapper>
-          <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-        </ArticleWrapper>
-        <ArticleWrapper>
-          <Article date="aaa" title="aaa" text="aaa" link="aaa" />
-        </ArticleWrapper>
+        {data.allWpPost.edges.map((post) => (
+          <ArticleWrapper>
+            <Article date={post.node.date} title={post.node.title} text={post.node.content} url={post.node.slug} />
+          </ArticleWrapper>
+        ))}
       </Grid>
     </Container>
   </Layout>
@@ -54,63 +41,13 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDo1NzI="}}) {
-      nodes {
-        title
-        zdjecieGlowne {
-          zdjecieGlowneObraz {
-            sourceUrl
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1896) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-        }
-        sponsorzy {
-          sponsorzyZdjecia {
-            sponsorzyZdjeciaZdjecie {
-              sourceUrl
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 1216) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-            sponsorzyZdjeciaLink
-          }
-        }
-        terminarz {
-          najblizszeMecze {
-            najblizszeMeczeData
-            najblizszeMeczeLista {
-              najblizszeMeczeListaMecz
-            }
-          }
-          ostatnieMecze {
-            ostatnieMeczeData
-            ostatnieMeczeLista {
-              ostatnieMeczeListaMecz
-              ostatnieMeczeListaWynik
-            }
-          }
-        }
-        uslugi {
-          uslugiUsluga {
-            uslugiIkona {
-              mediaDetails {
-                file
-              }
-              mediaItemUrl
-              sourceUrl
-            }
-            uslugiOpis
-            uslugiLink
-          }
+    allWpPost(sort: { fields: [date] }) {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+          date(formatString: "DD-MM-YYYY")
         }
       }
     }
