@@ -7,6 +7,20 @@ import Container from "../atomic/partials/container";
 import SectionTitle from "../atomic/atoms/section-title";
 import Text from "../atomic/atoms/text";
 
+const Content = styled.div`
+  margin-bottom: 32px;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  p {
+    color: #fff;
+    margin-bottom: 24px;
+  }
+`
+
 export default ({ data }) => {
     console.log(data)
     const post = data.allWpPost.edges[0].node
@@ -16,7 +30,7 @@ export default ({ data }) => {
             {/* <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} /> */}
             <Container>
               <SectionTitle className="top-overlay" title={post.title} p="320px 0 0 0" mb="48px" />
-              <Text>{post.content}</Text>
+              <Content>{parse(post.content)}</Content>
             </Container>
         </Layout>
     )

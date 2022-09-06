@@ -15,10 +15,12 @@ const Content = styled.div`
   margin-bottom: 32px;
 
   h1, h2, h3, h4, h5, h6 {
+    color: #fff;
     margin-bottom: 32px;
   }
 
   p {
+    color: #fff;
     margin-bottom: 24px;
   }
 `
