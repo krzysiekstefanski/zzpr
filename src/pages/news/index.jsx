@@ -21,7 +21,7 @@ const NewsPage = ({ data }) => (
       <Grid columns="33% 33% 33%" gap="30px" mb="100px">
         {data.allWpPost.edges.map((post) => (
           <ArticleWrapper>
-            <Article date={post.node.date} title={post.node.title} text={post.node.content} url={post.node.slug} />
+            <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
           </ArticleWrapper>
         ))}
       </Grid>

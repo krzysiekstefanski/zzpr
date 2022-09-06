@@ -113,7 +113,7 @@ const ArticlesSection = ({ className, data }) => (
             <Slider {...settings}>
                 {data.map((post) => (
                     <SlideWrapper>
-                        <Article nowrap date={post.node.date} title={post.node.title} text={post.node.content} url={post.node.slug} />
+                        <Article nowrap date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
                     </SlideWrapper>
                 ))}
             </Slider>
