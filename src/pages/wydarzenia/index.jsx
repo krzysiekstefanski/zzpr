@@ -6,6 +6,7 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
 import Grid from "../../components/grid"
+import Text from "../../atomic/atoms/text";
 import SectionTitle from "../../atomic/atoms/section-title";
 import { FlexBox } from "../../components/flexbox";
 import DownloadArea from "../../atomic/organisms/download-area";
