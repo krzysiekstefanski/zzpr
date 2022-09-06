@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components";
 import parse from "html-react-parser"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
