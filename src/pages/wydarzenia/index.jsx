@@ -29,7 +29,7 @@ const NewsPage = ({ data }) => (
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle className="top-overlay" title="Wydarzenia" p="320px 0 0 0" mb="48px" />
-      <Content>{parse(data.allWpPage.nodes[0].content)}</Content>
+      {data.allWpPage.nodes[0].content ? <Content>{parse(data.allWpPage.nodes[0].content)}</Content> : <Text>Strona w trakcie budowy</Text>}
       <DownloadArea data={data.allWpPage.nodes[0].plikiDoPobrania.plikiLista} mb="48px" />
     </Container>
   </Layout>

@@ -30,7 +30,7 @@ const HistoriaPage = ({ data }) => (
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle className="top-overlay" title="Historia" p="320px 0 0 0" mb="48px" />
-      <Content>{parse(data.allWpPage.nodes[0].content)}</Content>
+      {data.allWpPage.nodes[0].content ? <Content>{parse(data.allWpPage.nodes[0].content)}</Content> : <Text>Strona w trakcie budowy</Text>}
     </Container>
   </Layout>
 )
