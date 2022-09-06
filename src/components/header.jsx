@@ -388,6 +388,9 @@ const Header = ({ siteTitle }) => {
               <a onClick={e => handleMenuItemClick(e)}><AwardSVG />ZZPR<ArrowDownSVG className="arrow-down" /></a>
               <SubMenu>
                 <li>
+                  <Link to="/zarzad" onClick={e => handleMenuItemClick(e)}>Zarząd</Link>
+                </li>
+                <li>
                   <Link to="/zzpr" onClick={e => handleMenuItemClick(e)}>ZZPR</Link>
                 </li>
                 <li>
