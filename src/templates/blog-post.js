@@ -9,7 +9,7 @@ import SectionTitle from "../atomic/atoms/section-title";
 import Text from "../atomic/atoms/text";
 
 const Content = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 
   h1, h2, h3, h4, h5, h6 {
     color: #fff;

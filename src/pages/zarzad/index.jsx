@@ -25,20 +25,20 @@ const Content = styled.div`
   }
 `
 
-const HistoriaPage = ({ data }) => (
+const ZarzadPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Historia" p="320px 0 0 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="ZZPR" p="320px 0 0 0" mb="48px" />
       <Content>{parse(data.allWpPage.nodes[0].content)}</Content>
     </Container>
   </Layout>
 )
 
-export default HistoriaPage
+export default ZarzadPage
 
 export const pageQuery = graphql`
-  query WordpressHistoria {
+  query WordpressZarzad {
     wpPage(id: {eq: "cG9zdDoy"}) {
       ustawienia {
         ustawieniaTytulStrony
@@ -47,7 +47,7 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDo4MTk="}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDo4MTM="}}) {
       nodes {
         title
         content
