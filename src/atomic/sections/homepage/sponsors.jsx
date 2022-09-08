@@ -9,7 +9,7 @@ import { color } from "../../../components/colors"
 import { FlexBox } from "../../../components/flexbox"
 import Grid from "../../../components/grid"
 
-const Articles = styled.section`
+const Sponsors = styled.section`
     position: relative;
 
     .slick-list {
@@ -38,6 +38,7 @@ const Articles = styled.section`
     }
 
     .left-bg {
+        display: none;
         position: absolute;
         left: 0;
         bottom: -210px;
@@ -52,8 +53,20 @@ const Articles = styled.section`
     }
 
     .sponsors {
+        display: none;
+
         img {
             object-fit: contain !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .left-bg {
+            display: block;
+        }
+
+        .sponsors {
+            display: grid;
         }
     }
 `
@@ -64,14 +77,13 @@ const Anchor = styled.span`
 `
 
 
-const ArticlesSection = ({ className, data }) => (
-    <Articles className={className} imageWidth={data.sponsorzyZdjecia.length}>
+const SponsorsSection = ({ className, data }) => (
+    <Sponsors className={className} imageWidth={data.sponsorzyZdjecia.length}>
         <Anchor id="sponsorzy" />
         <Container>
             <Grid className="sponsors" columns={`repeat(${data.sponsorzyZdjecia.length}, minmax(25%, calc(50% - 12px)))`} gap="24px" justify="center" width="100%" m="172px 0 0">
                 {data.sponsorzyZdjecia.map((zdjecie) => (
                     <a href={zdjecie.sponsorzyZdjeciaLink ? zdjecie.sponsorzyZdjeciaLink : null} target="_blank">
-                        {console.log(data.sponsorzyZdjecia.length)}
                         <FlexBox className="content-left" hidden showMD height="409px" width="100%" relative >
                             <Img fixed={zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp.fluid} />
                         </FlexBox>
@@ -80,7 +92,7 @@ const ArticlesSection = ({ className, data }) => (
             </Grid>
         </Container>
         <StaticImage className="left-bg" src="../../../images/1.png" width="430px" />
-    </Articles >
+    </Sponsors >
 )
 
-export default ArticlesSection
+export default SponsorsSection
