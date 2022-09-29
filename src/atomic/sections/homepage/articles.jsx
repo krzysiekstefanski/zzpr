@@ -111,7 +111,7 @@ const ArticlesSection = ({ className, data }) => (
         <Container>
             <Heading mb="24px">Ogłoszenia</Heading>
             <Slider {...settings}>
-                {data.map((post) => (
+                {data.reverse().map((post) => (
                     <SlideWrapper>
                         <Article nowrap date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
                     </SlideWrapper>
