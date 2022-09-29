@@ -5,11 +5,8 @@ import parse from "html-react-parser"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
-import Grid from "../../components/grid"
 import Text from "../../atomic/atoms/text";
 import SectionTitle from "../../atomic/atoms/section-title";
-import { FlexBox } from "../../components/flexbox";
-import DownloadArea from "../../atomic/organisms/download-area";
 
 const Content = styled.div`
   margin-bottom: 48px;
@@ -29,7 +26,7 @@ const ZzprPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="ZZPR" p="320px 0 0 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="Galeria Sław" p="320px 0 8px 0" mb="48px" />
       {data.allWpPage.nodes[0].content ? <Content>{parse(data.allWpPage.nodes[0].content)}</Content> : <Text>Strona w trakcie budowy</Text>}
     </Container>
   </Layout>

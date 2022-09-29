@@ -17,7 +17,7 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="News" p="320px 0 0 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="News" p="320px 0 8px 0" mb="48px" />
       <Grid columns="33% 33% 33%" gap="30px" mb="100px">
         {data.allWpPost.edges.map((post) => (
           <ArticleWrapper>

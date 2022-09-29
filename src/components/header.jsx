@@ -391,7 +391,7 @@ const Header = ({ siteTitle }) => {
                   <Link to="/zarzad" onClick={e => handleMenuItemClick(e)}>Zarząd</Link>
                 </li>
                 <li>
-                  <Link to="/zzpr" onClick={e => handleMenuItemClick(e)}>ZZPR</Link>
+                  <Link to="/galeria-slaw" onClick={e => handleMenuItemClick(e)}>Galeria Sław</Link>
                 </li>
                 <li>
                   <Link to="/historia" onClick={e => handleMenuItemClick(e)}>Historia</Link>

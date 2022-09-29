@@ -30,7 +30,7 @@ export default ({ data }) => {
         <Layout>
             {/* <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} /> */}
             <Container>
-              <SectionTitle className="top-overlay" title={post.title} p="320px 0 0 0" mb="48px" />
+              <SectionTitle className="top-overlay" title={post.title} p="320px 0 8px 0" mb="48px" />
               <Content>{parse(post.content)}</Content>
             </Container>
         </Layout>

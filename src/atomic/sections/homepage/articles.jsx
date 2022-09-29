@@ -7,6 +7,7 @@ import Container from "../../partials/container"
 import Article from "../../molecules/article"
 import { color } from "../../../components/colors"
 import Heading from "../../atoms/heading";
+import Grid from "../../../components/grid"
 
 const settings = {
     centerMode: false,
@@ -104,19 +105,31 @@ const SlideWrapper = styled.div`
     padding-right: 24px;
 `
 
+const ArticleWrapper = styled.div`
+    min-height: 276px;
+    width: 100%;
+`;
+
 
 const ArticlesSection = ({ className, data }) => (
     <Articles className={className}>
         <Anchor id="wydarzenia" />
         <Container>
             <Heading mb="24px">Ogłoszenia</Heading>
-            <Slider {...settings}>
+            {/* <Slider {...settings}>
                 {data.reverse().map((post) => (
                     <SlideWrapper>
                         <Article nowrap date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
                     </SlideWrapper>
                 ))}
-            </Slider>
+            </Slider> */}
+            <Grid columns="1fr 1fr 1fr" gap="30px" mb="100px">
+                {data.reverse().map((post) => (
+                    <ArticleWrapper>
+                        <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
+                    </ArticleWrapper>
+                ))}
+            </Grid>
         </Container>
     </Articles >
 )
