@@ -15,10 +15,14 @@ const Wrapper = styled.div`
 
 const DownloadArea = ({ data, mb }) => (
     <Wrapper mb={mb}>
-        <Heading mb="24px">Pliki do pobrania</Heading>
-        {data.map((plik, i, arr) => (
-            i + 1 !== arr.length ? <FileSave data={plik} mb="24px" /> : <FileSave data={plik} />
-        ))}
+        {data ?
+            <>
+                <Heading mb="24px">Pliki do pobrania</Heading>
+                {data.map((plik, i, arr) => (
+                    i + 1 !== arr.length ? <FileSave data={plik} mb="24px" /> : <FileSave data={plik} />
+                ))}
+            </>
+            : null}
     </Wrapper>
 )
 
