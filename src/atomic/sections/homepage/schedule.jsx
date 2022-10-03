@@ -60,45 +60,47 @@ const Schedule = styled.section`
 
 const ScheduleSection = ({ className, data }) => (
     <Schedule id="terminarz" className={className}>
-        <Container>
-            <SectionTitle title="Terminarz" />
-            <Grid columns="1fr 1fr" gap="24px" width="100%" m="48px 0 0">
-                <FlexBox className="content-left" column width="100%">
-                    <FlexBox className="content-left__title" column width="100%" mb="28px">
-                        <Heading size="4" mb="8px">Najbliższe mecze</Heading>
+        {data ?
+            <Container>
+                <SectionTitle title="Terminarz" />
+                <Grid columns="1fr 1fr" gap="24px" width="100%" m="48px 0 0">
+                    <FlexBox className="content-left" column width="100%">
+                        <FlexBox className="content-left__title" column width="100%" mb="28px">
+                            <Heading size="4" mb="8px">Najbliższe mecze</Heading>
+                        </FlexBox>
+                        <FlexBox column width="100%" p="0 8px">
+                            {data.najblizszeMecze?.map((mecze) => (
+                                <>
+                                    <FlexBox align="center" width="100%" p="12px 16px" mb="16px"><Calendar /><Text>{mecze.najblizszeMeczeData ? mecze.najblizszeMeczeData : null}</Text></FlexBox>
+                                    <FlexBox column width="100%">
+                                        {mecze.najblizszeMeczeLista?.map((lista) => (
+                                            <FlexBox align="center" width="100%" backgroundColor={color.neutral20} p="12px 16px" mb="16px"><Text>{lista.najblizszeMeczeListaMecz ? lista.najblizszeMeczeListaMecz : null}</Text></FlexBox>
+                                        ))}
+                                    </FlexBox>
+                                </>
+                            ))}
+                        </FlexBox>
                     </FlexBox>
-                    <FlexBox column width="100%" p="0 8px">
-                        {data.najblizszeMecze.map((mecze) => (
-                            <>
-                                <FlexBox align="center" width="100%" p="12px 16px" mb="16px"><Calendar /><Text>{mecze.najblizszeMeczeData}</Text></FlexBox>
-                                <FlexBox column width="100%">
-                                    {mecze.najblizszeMeczeLista.map((lista) => (
-                                        <FlexBox align="center" width="100%" backgroundColor={color.neutral20} p="12px 16px" mb="16px"><Text>{lista.najblizszeMeczeListaMecz}</Text></FlexBox>
-                                    ))}
-                                </FlexBox>
-                            </>
-                        ))}
+                    <FlexBox className="content-right" column width="100%">
+                        <FlexBox className="content-right__title" column width="100%" mb="28px">
+                            <Heading size="4" mb="8px">Ostatnie mecze</Heading>
+                        </FlexBox>
+                        <FlexBox column width="100%" p="0 8px">
+                            {data.ostatnieMecze?.map((mecze) => (
+                                <>
+                                    <FlexBox align="center" width="100%" p="12px 16px" mb="16px"><Calendar /><Text>{mecze.ostatnieMeczeData ? mecze.ostatnieMeczeData : null}</Text></FlexBox>
+                                    <FlexBox column width="100%">
+                                        {mecze.ostatnieMeczeLista?.map((lista) => (
+                                            <FlexBox justify="space-between" align="center" width="100%" backgroundColor={color.neutral20} p="12px 16px" mb="16px"><Text pr="32px">{lista.ostatnieMeczeListaMecz ? lista.ostatnieMeczeListaMecz : null}</Text><span>{lista.ostatnieMeczeListaWynik ? lista.ostatnieMeczeListaWynik : null}</span></FlexBox>
+                                        ))}
+                                    </FlexBox>
+                                </>
+                            ))}
+                        </FlexBox>
                     </FlexBox>
-                </FlexBox>
-                <FlexBox className="content-right" column width="100%">
-                    <FlexBox className="content-right__title" column width="100%" mb="28px">
-                        <Heading size="4" mb="8px">Ostatnie mecze</Heading>
-                    </FlexBox>
-                    <FlexBox column width="100%" p="0 8px">
-                        {data.ostatnieMecze.map((mecze) => (
-                            <>
-                                <FlexBox align="center" width="100%" p="12px 16px" mb="16px"><Calendar /><Text>{mecze.ostatnieMeczeData}</Text></FlexBox>
-                                <FlexBox column width="100%">
-                                    {mecze.ostatnieMeczeLista.map((lista) => (
-                                        <FlexBox justify="space-between" align="center" width="100%" backgroundColor={color.neutral20} p="12px 16px" mb="16px"><Text pr="32px">{lista.ostatnieMeczeListaMecz}</Text><span>{lista.ostatnieMeczeListaWynik}</span></FlexBox>
-                                    ))}
-                                </FlexBox>
-                            </>
-                        ))}
-                    </FlexBox>
-                </FlexBox>
-            </Grid>
-        </Container>
+                </Grid>
+            </Container>
+            : null}
     </Schedule>
 )
 
