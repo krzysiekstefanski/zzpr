@@ -10,6 +10,20 @@ import SectionTitle from "../../atomic/atoms/section-title";
 import { FlexBox } from "../../components/flexbox";
 import DownloadArea from "../../atomic/organisms/download-area";
 
+const Content = styled.div`
+  margin-bottom: 48px;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  p {
+    color: #fff;
+    margin-bottom: 24px;
+  }
+`
+
 const MlodziczkiPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
