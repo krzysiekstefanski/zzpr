@@ -47,7 +47,7 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDoxMTg3"}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDoxMTgx"}}) {
       nodes {
         title
         content
