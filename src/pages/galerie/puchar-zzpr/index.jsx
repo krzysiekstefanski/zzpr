@@ -29,7 +29,7 @@ const Content = styled.div`
     display: grid;
     grid-gap: 30px;
 
-    .attachment-thumbnail {
+    .gatsby-image-wrapper {
       width: 100% !important;
     }
   }
