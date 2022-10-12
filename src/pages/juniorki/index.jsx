@@ -15,7 +15,7 @@ const JuniorkiPage = ({ data }) => (
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle className="top-overlay" title="Juniorki" p="320px 0 8px 0" mb="48px" />
-      <Text>Strona w trakcie budowy</Text>
+      {data.allWpPage.nodes[0].content ? <Content>{parse(data.allWpPage.nodes[0].content)}</Content> : <Text>Strona w trakcie budowy</Text>}
     </Container>
   </Layout>
 )
@@ -32,22 +32,10 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDo1NzI="}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDoxMTY1"}}) {
       nodes {
         title
-        plikiDoPobrania {
-          plikiLista {
-            plik {
-              localFile {
-                ext
-                publicURL
-                url
-                name
-                size
-              }
-            }
-          }
-        }
+        content
       }
     }
   }
