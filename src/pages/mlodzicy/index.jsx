@@ -1,6 +1,7 @@
 import * as React from "react"
-import styled from "styled-components";
 import { graphql } from "gatsby"
+import styled from "styled-components";
+import parse from "html-react-parser"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
