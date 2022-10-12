@@ -23,6 +23,16 @@ const Content = styled.div`
     color: #fff;
     margin-bottom: 24px;
   }
+
+  .gallery-columns-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    grid-gap: 30px;
+
+    .attachment-thumbnail {
+      width: 100% !important;
+    }
+  }
 `
 
 const PucharPage = ({ data }) => (
