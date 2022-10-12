@@ -29,6 +29,10 @@ const Content = styled.div`
     display: grid;
     grid-gap: 30px;
 
+    .inline-gatsby-image-wrapper {
+      width: 100% !important;
+    }
+
     .gatsby-image-wrapper {
       width: 100% !important;
     }
