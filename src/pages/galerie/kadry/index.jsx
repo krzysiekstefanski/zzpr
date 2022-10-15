@@ -1,46 +1,22 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import styled from "styled-components";
-import parse from "html-react-parser"
 import Layout from "../../../components/layout"
 import Seo from "../../../components/seo"
 import Container from "../../../atomic/partials/container";
-import Grid from "../../../components/grid"
 import Text from "../../../atomic/atoms/text";
 import SectionTitle from "../../../atomic/atoms/section-title";
-import { FlexBox } from "../../../components/flexbox";
-import DownloadArea from "../../../atomic/organisms/download-area";
-
-const Content = styled.div`
-  margin-bottom: 48px;
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #fff;
-    margin-bottom: 32px;
-  }
-
-  p {
-    color: #fff;
-    margin-bottom: 24px;
-  }
-
-  .gallery-columns-3 {
-    grid-template-columns: 1fr 1fr 1fr;
-    display: grid;
-    grid-gap: 30px;
-
-    .gatsby-image-wrapper {
-      width: 100% !important;
-    }
-  }
-`
+import GalleryPreview from "../../../atomic/organisms/gallery-preview";
 
 const KadryPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle className="top-overlay" title="Galerie - Kadry" p="320px 0 8px 0" mb="48px" />
-      {data.allWpPage.nodes[0].content ? <Content>{parse(data.allWpPage.nodes[0].content)}</Content> : <Text>Strona w trakcie budowy</Text>}
+      {data.allWpPage.nodes[0].galeria.listaGalerii ?
+        data.allWpPage.nodes[0].galeria.listaGalerii.map((galeria) => (
+          <GalleryPreview data={galeria} />
+        ))
+        : <Text>Strona w trakcie budowy</Text>}
     </Container>
   </Layout>
 )
@@ -57,10 +33,23 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: {id: {eq: "cG9zdDoxMTgx"}}) {
+    allWpPage(filter: {id: {eq: "cG9zdDoxMjEy"}}) {
       nodes {
-        title
-        content
+        galeria {
+          listaGalerii {
+            nazwaGalerii
+            zdjecia {
+              localFile {
+                publicURL
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

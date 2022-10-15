@@ -7,6 +7,7 @@ export const FlexBox = styled.div`
   align-items: ${props => (props.center ? "center" : props.align ? props.align : "flex-start")};
   flex-wrap: ${props => (props.wrap ? "wrap" : "nowrap")};
   flex-grow: ${props => (props.grow ? props.grow : "")};
+  gap: ${props => (props.gap ? props.gap : "")};
   height: ${props => (props.height ? props.height : "")};
   width: ${props => (props.width ? props.width : "")};
   max-width: ${props => (props.maxWidth ? `${props.maxWidth}` : "")};

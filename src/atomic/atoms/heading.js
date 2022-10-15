@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import parse from "html-react-parser"
+import { header } from "../../components/general-config"
 import { color } from "../../components/colors"
 
 const Title = styled.h3`
   font-family: Albert Sans, sans-serif;
-  font-size: 20px;
-  line-height: 32px;
+  ${props => (props.typography ? props.typography : header.typography ? props.size ? header.typography[props.size - 1] : header.typography[header.size - 1] : "h400")}
   color: ${props => (props.color ? props.color : `${color.white}`)};
   text-align: ${props => (props.center ? "center" : props.align ? props.align : "")};
   padding-bottom: ${props => (props.pb ? (props.pb === "auto" ? "auto" : `${props.pb}px`) : "")};
