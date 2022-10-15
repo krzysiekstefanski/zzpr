@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
   `).then(result => {
-    result.data.allWpPage.nodes[0].galeria.listaGalerii.forEach(({ nazwaGalerii }, i) => {
+    result.data.allWpPage.nodes[0].galeria.listaGalerii?.forEach(({ nazwaGalerii }, i) => {
       createPage({
         // Decide URL structure
         path: "/galerie/puchar-zzpr/" + nazwaGalerii.toLowerCase().normalize("NFD").replace("ł", "l").replace("ó", "o").replace(/\s+/g, '-'),
@@ -78,7 +78,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
   `).then(result => {
-    result.data.allWpPage.nodes[0].galeria.listaGalerii.forEach(({ nazwaGalerii }, i) => {
+    result.data.allWpPage.nodes[0].galeria.listaGalerii?.forEach(({ nazwaGalerii }, i) => {
       createPage({
         // Decide URL structure
         path: "/galerie/konferencje/" + nazwaGalerii.toLowerCase().normalize("NFD").replace("ł", "l").replace("ó", "o").replace(/\s+/g, '-'),
@@ -109,7 +109,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
   `).then(result => {
-    result.data.allWpPage.nodes[0].galeria.listaGalerii.forEach(({ nazwaGalerii }, i) => {
+    result.data.allWpPage.nodes[0].galeria.listaGalerii?.forEach(({ nazwaGalerii }, i) => {
       createPage({
         // Decide URL structure
         path: "/galerie/kadry/" + nazwaGalerii.toLowerCase().normalize("NFD").replace("ł", "l").replace("ó", "o").replace(/\s+/g, '-'),
