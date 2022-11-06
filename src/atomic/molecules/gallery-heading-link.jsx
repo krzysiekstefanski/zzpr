@@ -35,7 +35,6 @@ const Wrapper = styled(FlexBox)`
 
 const GalleryHeadingLink = ({ data, icon, dataId, nowrap, date, title, text, url }) => (
     <Wrapper justify="space-between" align="center" width="100%" mb="24px">
-        {console.log(data.toLowerCase().normalize("NFD").replace("ł", "l").replace("ó", "o").replace(/\s+/g, '-'))}
         <Heading size="h600" color={color.white}>{data}</Heading>
         <Link to={data.toLowerCase().normalize("NFD").replace("ł", "l").replace("ó", "o").replace(/\s+/g, '-')} typography="button">
             Zobacz więcej

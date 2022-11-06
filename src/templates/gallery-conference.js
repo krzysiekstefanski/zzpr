@@ -22,12 +22,8 @@ const Wrapper = styled(Grid)`
 `
 
 export default ({ data, pageContext }) => {
-    console.log(pageContext)
-    console.log(data)
     const page = data.allWpPage.nodes[0]
-    console.log(page)
     const gallery = page.galeria.listaGalerii[pageContext.id].nazwaGalerii
-    console.log(gallery)
     const photos = page.galeria.listaGalerii[pageContext.id].zdjecia
     return (
         <Layout>

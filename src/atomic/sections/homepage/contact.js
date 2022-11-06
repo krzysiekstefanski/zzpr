@@ -24,7 +24,6 @@ position: relative;
 
 const ContactSection = ({ className, data }) => (
   <Contact id="kontakt" className={className}>
-    {console.log(data)}
     <Container>
       <SectionTitle title="Dane kontaktowe" upperline lineWidth="48px" mb="24px" mbMD="64px" />
       <FlexBox column directionMD="row" justify="space-between" mb="24px" mbMD="80px">

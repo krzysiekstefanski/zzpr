@@ -355,13 +355,11 @@ const Header = ({ siteTitle }) => {
   })
 
   const handleClick = e => {
-    console.log(e.target)
     e.target.closest("button").classList.toggle("active")
     setHamburgerIsActive(!hamburgerIsActive)
   }
 
   const handleMenuItemClick = e => {
-    console.log(e.target)
     e.target.closest("ul").parentElement.classList.remove("active")
     e.target.closest("ul").parentElement.previousSibling?.classList.remove("active")
     setHamburgerIsActive(!hamburgerIsActive)

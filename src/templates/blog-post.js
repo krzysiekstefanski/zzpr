@@ -11,21 +11,19 @@ import Text from "../atomic/atoms/text";
 const Content = styled.div`
   margin-bottom: 48px;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, ol {
     color: #fff;
     margin-bottom: 32px;
   }
 
-  p {
+  p, li {
     color: #fff;
     margin-bottom: 24px;
   }
 `
 
 export default ({ data }) => {
-    console.log(data)
     const post = data.allWpPost.edges[0].node
-    console.log(post)
     return (
         <Layout>
             {/* <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} /> */}
