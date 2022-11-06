@@ -41,7 +41,7 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPost(sort: { fields: [date], order:DEC }) {
+    allWpPost(sort: { fields: [date], order:DESC }) {
       edges {
         node {
           title
