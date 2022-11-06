@@ -19,7 +19,7 @@ const NewsPage = ({ data }) => (
     <Container>
       <SectionTitle className="top-overlay" title="News" p="320px 0 8px 0" mb="48px" />
       <Grid columns="33% 33% 33%" gap="30px" mb="100px">
-        {data.allWpPost.edges.reverse().map((post) => (
+        {data.allWpPost.edges.map((post) => (
           <ArticleWrapper>
             <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
           </ArticleWrapper>
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPost(sort: { fields: [date] }) {
+    allWpPost(sort: { fields: [date]:"desc" }) {
       edges {
         node {
           title
