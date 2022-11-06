@@ -20,6 +20,10 @@ const Content = styled.div`
     color: #fff;
     margin-bottom: 24px;
   }
+
+  ul, ol {
+    padding-left: 24px;
+  }
 `
 
 export default ({ data }) => {
