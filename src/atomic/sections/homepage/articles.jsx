@@ -124,7 +124,7 @@ const ArticlesSection = ({ className, data }) => (
                 ))}
             </Slider> */}
             <Grid columns="1fr 1fr 1fr" gap="30px" mb="100px">
-                {data.reverse().map((post) => (
+                {data.slice(0, 5).reverse().map((post) => (
                     <ArticleWrapper>
                         <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
                     </ArticleWrapper>
