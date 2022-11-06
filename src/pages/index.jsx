@@ -97,7 +97,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWpPost(sort: { fields: [date]:"desc" }) {
+    allWpPost(sort: { fields: [date], order:DEC }) {
       edges {
         node {
           title
