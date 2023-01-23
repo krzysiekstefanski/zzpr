@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { color } from "./colors"
 import Container from "../atomic/partials/container"
+import LinkExt from "../atomic/atoms/link"
+import Link from "../atomic/atoms/InternalLink"
+import SubMenu from "../atomic/cells/SubMenu/SubMenu"
 import { menu } from "./general-config"
 import LogoSVG from "../images/logo-czarne-zzpr.inline.svg"
 import AwardSVG from "../images/award.inline.svg"
@@ -22,13 +24,14 @@ const CustomHeader = styled.header`
   top: 0;
   left: 0;
   z-index: 999;
-  padding: 32px 0;
+  padding: 16px 0 8px;
   background-color: ${menu.backgroundColor ? menu.backgroundColor[0] : ""};
   border-bottom: ${menu.borderBottom ? menu.borderBottom[0] : ""};
   transition: padding 0.3s ease;
 
   @media (min-width: 992px) {
     align-items: center;
+    padding: 32px 0;
   }
 
   & > div {
@@ -53,6 +56,7 @@ const CustomHeader = styled.header`
 `
 
 const LogoWrapper = styled(Link)`
+  display: none;
   width: 100%;
   mix-blend-mode: lighten;
   position: relative;
@@ -71,8 +75,41 @@ const LogoWrapper = styled(Link)`
     max-width: 250px;
   }
 
+  @media (min-width: 769px) {
+    display: block;
+  }
+
   @media (min-width: 992px) {
     max-width: 350px;
+  }
+
+  svg {
+    background-color: ${color.white};
+  }
+`
+
+const MobileLogoWrapper = styled(Link)`
+  display: block;
+  width: 50%;
+  mix-blend-mode: lighten;
+  position: relative;
+
+  &::before {
+    content: '';
+    border: 8px solid ${color.black};
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media (min-width: 576px) {
+    max-width: 250px;
+  }
+
+  @media (min-width: 769px) {
+    display: none;
   }
 
   svg {
@@ -88,30 +125,27 @@ const TopNav = styled.nav`
 
 const TopNavList = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100%;
   max-width: 1192px;
   list-style: none;
-  margin: 0 24px;
+  padding: 16px 0 0;
 
-  @media (min-width: 992px) {
-    flex-direction: row;
-  }
+  // @media (min-width: 992px) {
+  //   flex-direction: row;
+  // }
 
   & > li {
     position: relative;
 
     &:not(:last-child) {
-      margin-right: 40px;
+      margin-right: 8px;
     }
   }
 
   li {
-    
-
     a {
-      display: flex;
       align-items: center;
       ${menu.typography ? menu.typography : null}
       color: ${menu.color[0]};
@@ -124,6 +158,7 @@ const TopNavList = styled.ul`
 
       svg {
         &:first-child {
+          display: none;
           margin-right: 8px;
         }
 
@@ -146,19 +181,39 @@ const TopNavList = styled.ul`
       }
     }
   }
+
+  @media (min-width: 769px) {
+    padding: 0;
+    margin: 0 24px;
+    
+    & > li {
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+    }
+
+    li {
+      a {
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
 `
 
 const Navigation = styled.nav`
-  height: 288px;
+  height: calc(100vh - 75px);
   width: 100%;
   position: absolute;
   left: 0;
   right: 0;
-  top: 110px;
+  top: 75px;
   transition: height 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
+  overflow: auto;
 
   @media (min-width: 992px) {
+    height: 288px;
     position: static;
     background-color: transparent;
     background-image: none;
@@ -180,8 +235,9 @@ const NavList = styled.ul`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: ${color.black};
   list-style: none;
-  padding: 32px 15px;
+  padding: 16px 0;
   margin: 0 auto;
 
   @media (min-width: 992px) {
@@ -190,10 +246,6 @@ const NavList = styled.ul`
     border-top: 1px solid ${color.neutral20};
     padding: 8px 24px 0;
     margin: 16px auto 0;
-  }
-
-  & > li {
-    position: relative;
   }
 
   li {
@@ -237,35 +289,21 @@ const NavList = styled.ul`
     }
   }
 
+  & > li {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
   hr {
+    display: none;
     height: 24px;
     border: 0;
     border-right: 1px solid ${color.neutral20};
-  }
-`
 
-const SubMenu = styled.ul`
-  display: none;
-  flex-direction: column;
-  background-color: ${color.neutral00};
-  list-style: none;
-  padding: 16px;
-  position: absolute;
-  top: 45px;
-  left: -16px;
-  z-index: 1;
-
-  &.contact {
-    left: auto;
-    right: -16px;
-  }
-
-  &.active {
-    display: flex;
-  }
-
-  a {
-    padding: 8px;
+    @media (min-width: 769px) {
+      display: block;
+    }
   }
 `
 
@@ -355,14 +393,12 @@ const Header = ({ siteTitle }) => {
   })
 
   const handleClick = e => {
-    e.target.closest("button").classList.toggle("active")
     setHamburgerIsActive(!hamburgerIsActive)
   }
 
-  const handleMenuItemClick = e => {
+  const handleMenuItemClick = (e, hamburgerHandle) => {
     e.target.closest("ul").parentElement.classList.remove("active")
-    e.target.closest("ul").parentElement.previousSibling?.classList.remove("active")
-    setHamburgerIsActive(!hamburgerIsActive)
+    setHamburgerIsActive(hamburgerHandle)
 
     if (e.target.closest("a").nextSibling) {
       document.querySelectorAll('.header ul').forEach(function (list) {
@@ -376,41 +412,45 @@ const Header = ({ siteTitle }) => {
 
   return (
     <CustomHeader className="header">
-      <Container position="static">
+      <Container position="static" order="2" orderMD="1">
         <LogoWrapper className="logo" to="/">
           <LogoSVG />
         </LogoWrapper>
         <TopNav aria-label="secondary">
           <TopNavList>
             <li>
-              <a onClick={e => handleMenuItemClick(e)}><AwardSVG />ZZPR<ArrowDownSVG className="arrow-down" /></a>
-              <SubMenu>
+              <LinkExt onClick={e => handleMenuItemClick(e, false)} mr="6px" mrMd="0"><AwardSVG />ZZPR<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <SubMenu width="100vw" backgroundColor={color.black} backgroundColorMD={color.neutral00} top="31px" left="-15px">
                 <li>
-                  <Link to="/zarzad" onClick={e => handleMenuItemClick(e)}>Zarząd</Link>
+                  <Link to="/zarzad" onClick={e => handleMenuItemClick(e, false)}>Zarząd</Link>
                 </li>
                 <li>
-                  <Link to="/galeria-slaw" onClick={e => handleMenuItemClick(e)}>Galeria Sław</Link>
+                  <Link to="/galeria-slaw" onClick={e => handleMenuItemClick(e, false)}>Galeria Sław</Link>
                 </li>
                 <li>
-                  <Link to="/historia" onClick={e => handleMenuItemClick(e)}>Historia</Link>
+                  <Link to="/historia" onClick={e => handleMenuItemClick(e, false)}>Historia</Link>
                 </li>
               </SubMenu>
             </li>
             <li>
-              <Link to="/rozgrywki" onClick={e => handleMenuItemClick(e)}><DashboardSVG />Rozgrywki</Link>
+              <Link to="/rozgrywki" onClick={e => handleMenuItemClick(e)} mr="6px"><DashboardSVG />Rozgrywki</Link>
             </li>
             <li>
-              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e)}><DocumentSVG />Regulaminy i przepisy</Link>
+              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e, false)} display="none" displayMD="flex"><DocumentSVG />Regulaminy i przepisy</Link>
+              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e, false)} displayMD="none" mr="6px"><DocumentSVG />Przepisy</Link>
             </li>
             <li>
-              <Link to="/kontakt" onClick={e => handleMenuItemClick(e)}><ChatSVG />Kontakt</Link>
+              <Link to="/kontakt" onClick={e => handleMenuItemClick(e, false)}><ChatSVG />Kontakt</Link>
             </li>
           </TopNavList>
         </TopNav>
       </Container>
-      <Container position="static">
+      <Container position="static" order="1" orderMD="2">
+        <MobileLogoWrapper className="logo" to="/">
+          <LogoSVG />
+        </MobileLogoWrapper>
         <Hamburger
-          className="hamburger"
+          className={hamburgerIsActive ? "active" : "hidden"}
           onClick={e => handleClick(e)}
         >
           <span />
@@ -420,64 +460,64 @@ const Header = ({ siteTitle }) => {
         <Navigation className={hamburgerIsActive ? "active" : "hidden"} aria-label="primary">
           <NavList>
             <li>
-              <Link to="/news" onClick={e => handleMenuItemClick(e)}>News</Link>
+              <Link to="/news" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">News</Link>
             </li>
             <hr />
             <li>
-              <Link to="/wydarzenia" onClick={e => handleMenuItemClick(e)}>Wydarzenia</Link>
+              <Link to="/wydarzenia" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Wydarzenia</Link>
             </li>
             <hr />
             <li>
-              <Link to="/kluby" onClick={e => handleMenuItemClick(e)}>Kluby</Link>
+              <Link to="/kluby" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Kluby</Link>
             </li>
             <hr />
             <li>
-              <a onClick={e => handleMenuItemClick(e)}>Kadry<ArrowDownSVG className="arrow-down" /></a>
-              <SubMenu>
+              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Kadry<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <SubMenu position="static">
                 <li>
-                  <Link to="/kadry/chlopcy" onClick={e => handleMenuItemClick(e)}>Kadry - Chłopcy</Link>
+                  <Link to="/kadry/chlopcy" onClick={e => handleMenuItemClick(e, false)}>Kadry - Chłopcy</Link>
                 </li>
                 <li>
-                  <Link to="/kadry/dziewczeta" onClick={e => handleMenuItemClick(e)}>Kadry - Dziewczęta</Link>
-                </li>
-              </SubMenu>
-            </li>
-            <hr />
-            <li>
-              <a onClick={e => handleMenuItemClick(e)}>Trenerzy<ArrowDownSVG className="arrow-down" /></a>
-              <SubMenu>
-                <li>
-                  <Link to="/trenerzy" onClick={e => handleMenuItemClick(e)}>Trenerzy</Link>
-                </li>
-                <li>
-                  <Link to="/ospr" onClick={e => handleMenuItemClick(e)}>OSPR</Link>
+                  <Link to="/kadry/dziewczeta" onClick={e => handleMenuItemClick(e, false)}>Kadry - Dziewczęta</Link>
                 </li>
               </SubMenu>
             </li>
             <hr />
             <li>
-              <Link to="/sedziowie" onClick={e => handleMenuItemClick(e)}>Sędziowie</Link>
-            </li>
-            <hr />
-            <li>
-              <Link to="/oldboys" onClick={e => handleMenuItemClick(e)}>Oldboys</Link>
-            </li>
-            <hr />
-            <li>
-              <Link to="/pilka-reczna-plazowa" onClick={e => handleMenuItemClick(e)}>Ręczna plażowa</Link>
-            </li>
-            <hr />
-            <li>
-              <a onClick={e => handleMenuItemClick(e)}>Galerie<ArrowDownSVG className="arrow-down" /></a>
-              <SubMenu className="contact">
+              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Trenerzy<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <SubMenu position="static">
                 <li>
-                  <Link to="/galerie/kadry" onClick={e => handleMenuItemClick(e)}>Kadry</Link>
+                  <Link to="/trenerzy" onClick={e => handleMenuItemClick(e, false)}>Trenerzy</Link>
                 </li>
                 <li>
-                  <Link to="/galerie/konferencje" onClick={e => handleMenuItemClick(e)}>Konferencje</Link>
+                  <Link to="/ospr" onClick={e => handleMenuItemClick(e, false)}>OSPR</Link>
+                </li>
+              </SubMenu>
+            </li>
+            <hr />
+            <li>
+              <Link to="/sedziowie" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Sędziowie</Link>
+            </li>
+            <hr />
+            <li>
+              <Link to="/oldboys" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Oldboys</Link>
+            </li>
+            <hr />
+            <li>
+              <Link to="/pilka-reczna-plazowa" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Ręczna plażowa</Link>
+            </li>
+            <hr />
+            <li>
+              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Galerie<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <SubMenu className="contact" position="static">
+                <li>
+                  <Link to="/galerie/kadry" onClick={e => handleMenuItemClick(e, false)}>Kadry</Link>
                 </li>
                 <li>
-                  <Link to="/galerie/puchar-zzpr" onClick={e => handleMenuItemClick(e)}>Puchar ZZPR</Link>
+                  <Link to="/galerie/konferencje" onClick={e => handleMenuItemClick(e, false)}>Konferencje</Link>
+                </li>
+                <li>
+                  <Link to="/galerie/puchar-zzpr" onClick={e => handleMenuItemClick(e, false)}>Puchar ZZPR</Link>
                 </li>
               </SubMenu>
             </li>

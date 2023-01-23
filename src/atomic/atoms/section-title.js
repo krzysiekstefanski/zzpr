@@ -57,8 +57,8 @@ const Heading = styled.h2`
   
 `;
 
-const SectionTitle = ({ className, size, title, children, width, typography, color, center, align, uppercase, p, pt, pb, pbLG, m, mr, mb, mbMD, underline, upperline, lineHeight, lineWidth, lineCenter }) => (
-  <Heading className={className} as={`h${size ? size : header.size}`} size={size} width={width} typography={typography} color={color} center={center} align={align} uppercase={uppercase} p={p} pb={pb} pt={pt} pbLG={pbLG} m={m} mr={mr} mb={mb} mbMD={mbMD} underline={underline} upperline={upperline} lineHeight={lineHeight} lineWidth={lineWidth} lineCenter={lineCenter}>
+const SectionTitle = ({ className, size, title, children, width, typography, color, center, align, uppercase, p, pt, pb, pbLG, m, mr, mb, mbMD, underline, upperline, lineHeight, lineWidth, lineCenter, ...rest }) => (
+  <Heading className={className} as={`h${size ? size : header.size}`} size={size} width={width} typography={typography} color={color} center={center} align={align} uppercase={uppercase} p={p} pb={pb} pt={pt} pbLG={pbLG} m={m} mr={mr} mb={mb} mbMD={mbMD} underline={underline} upperline={upperline} lineHeight={lineHeight} lineWidth={lineWidth} lineCenter={lineCenter} {...rest}>
     {title ? parse(title) : null}
     {children ? parse(children) : null}
   </Heading>

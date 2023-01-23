@@ -8,7 +8,7 @@ export const menu =  {
     colorHover: [color.red40, color.red40],
     fontBackgroundColor: [color.white, color.blue100],
     borderBottom: [ ``, `1px solid ${color.neutral20}`],
-    hamburgerColor: [color.blue40, color.blue40],
+    hamburgerColor: [color.white, color.white],
     navigationColor: [color.red00, color.blue40],
     textTransform: "",
 }

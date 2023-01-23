@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   flex-direction: ${props => props.column ? "column" : ""};
   justify-content: ${props => props.justify ? props.justify : ""};
   align-items: ${props => props.align ? props.align : ""};
+  order: ${props => props.order ? props.order : ""};
   position: ${props => props.position ? props.position : "relative"};
   width: 100%;
   max-width: 568px;
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 769px) {
     flex-direction: ${props => props.columnMD ? "column" : props.directionMD ? props.directionMD : ""};
+    order: ${props => props.orderMD ? props.orderMD : ""};
     max-width: 768px;
   }
 
@@ -36,8 +38,8 @@ const Wrapper = styled.div`
   }
 `
 
-const Container = ({ flex, column, directionMD, justify, align, children, style, width, className, id, position, noPadding}) => (
-  <Wrapper style={style} flex={flex} column={column} directionMD={directionMD} justify={justify} align={align} width={width} className={className} id={id} position={position} noPadding={noPadding}>
+const Container = ({ flex, column, directionMD, justify, align, children, style, width, className, id, position, noPadding, ...rest}) => (
+  <Wrapper style={style} flex={flex} column={column} directionMD={directionMD} justify={justify} align={align} width={width} className={className} id={id} position={position} noPadding={noPadding} {...rest}>
     {children}
   </Wrapper>
 )

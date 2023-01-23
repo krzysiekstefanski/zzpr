@@ -11,7 +11,7 @@ const KadryPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Galerie - Kadry" p="320px 0 8px 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="Galerie - Kadry" p="200px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
       {data.allWpPage.nodes[0].galeria.listaGalerii ?
         data.allWpPage.nodes[0].galeria.listaGalerii.map((galeria) => (
           <GalleryPreview data={galeria} />

@@ -14,7 +14,7 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Kluby" p="320px 0 8px 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="Kluby" p="200px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
       <Grid columns="25% 25% 25% 25%" gap="24px" mb="120px">
         {data.allWpPage.nodes[0].kluby.klubyLista.map((klub) => (
           <ClubCard data={klub} />
