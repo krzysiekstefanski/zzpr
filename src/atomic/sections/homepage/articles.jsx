@@ -8,6 +8,7 @@ import Article from "../../molecules/article"
 import { color } from "../../../components/colors"
 import Heading from "../../atoms/heading";
 import Grid from "../../../components/grid"
+import Box from "../../atoms/Box/Box"
 
 const settings = {
     centerMode: false,
@@ -123,13 +124,13 @@ const ArticlesSection = ({ className, data }) => (
                     </SlideWrapper>
                 ))}
             </Slider> */}
-            <Grid columns="1fr 1fr 1fr" gap="30px" mb="100px">
+            <Box column displayMD="grid" columnsMD="1fr 1fr 1fr" gap="30px" margin="0 0 32px" marginMD="0 0 100px">
                 {data.slice(0, 6).map((post) => (
                     <ArticleWrapper>
                         <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
                     </ArticleWrapper>
                 ))}
-            </Grid>
+            </Box>
         </Container>
     </Articles >
 )

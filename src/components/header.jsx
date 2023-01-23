@@ -394,6 +394,9 @@ const Header = ({ siteTitle }) => {
 
   const handleClick = e => {
     setHamburgerIsActive(!hamburgerIsActive)
+    document.querySelectorAll('.header ul').forEach(function (list) {
+      list.classList.remove("active")
+    })
   }
 
   const handleMenuItemClick = (e, hamburgerHandle) => {

@@ -53,9 +53,8 @@ const Sponsors = styled.section`
     }
 
     .sponsors {
-        display: none;
-
         img {
+            position: static !important;
             object-fit: contain !important;
         }
     }
@@ -63,10 +62,6 @@ const Sponsors = styled.section`
     @media (min-width: 769px) {
         .left-bg {
             display: block;
-        }
-
-        .sponsors {
-            display: grid;
         }
     }
 `
@@ -81,10 +76,10 @@ const SponsorsSection = ({ className, data }) => (
     <Sponsors className={className} imageWidth={data.sponsorzyZdjecia.length}>
         <Anchor id="sponsorzy" />
         <Container>
-            <Grid className="sponsors" columns={`repeat(${data.sponsorzyZdjecia.length}, minmax(25%, calc(50% - 12px)))`} gap="24px" justify="center" width="100%" m="172px 0 0">
+            <Grid className="sponsors" columnsMD={`repeat(${data.sponsorzyZdjecia.length}, minmax(25%, calc(50% - 12px)))`} gap="24px" justify="center" width="100%" m="64px 0 0" mMD="172px 0 0">
                 {data.sponsorzyZdjecia.map((zdjecie) => (
                     <a href={zdjecie.sponsorzyZdjeciaLink ? zdjecie.sponsorzyZdjeciaLink : null} target="_blank">
-                        <FlexBox className="content-left" hidden showMD height="409px" width="100%" relative >
+                        <FlexBox className="content-left" width="100%" relative >
                             <Img fixed={zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp.fluid} />
                         </FlexBox>
                     </a>

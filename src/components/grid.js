@@ -24,6 +24,7 @@ const Wrapper = styled.div`
     width: ${props => (props.widthMD ? props.widthMD : "")};
     padding: ${props => margin(props.pMD ? props.pMD : "")};
     padding-right: ${props => props.prMD ? `${props.prMD}px` : ""};
+    margin: ${props => margin(props.mMD ? props.mMD : "")};
   }
 
   @media (min-width: 992px) {

@@ -12,7 +12,7 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="Sędziowe" p="200px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
+      <SectionTitle className="top-overlay" title="Sędziowe" p="145px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
       <Heading size="3" mb="24px">Komisja sędziowska zachodniopomorskiego związku piłki ręcznej</Heading>
       <Text mb="16px">Przewodniczący: Jakub Jerlecki</Text>
       <Text mb="16px">Zastępca Przewodniczącego: Marek Królik</Text>

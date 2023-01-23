@@ -30,7 +30,7 @@ export default ({ data, pageContext }) => {
             {/* <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} /> */}
             <Container>
               <p>aaaa</p>
-              <SectionTitle className="top-overlay" title={gallery} p="200px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
+              <SectionTitle className="top-overlay" title={gallery} p="145px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
               {/* <Content>{parse(post.content)}</Content> */}
               <Wrapper columns="1fr 1fr 1fr" gap="24px" width="100%" mb="64px">
                 {photos.map((zdjecie) => (

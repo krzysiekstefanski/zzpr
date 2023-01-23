@@ -57,7 +57,7 @@ const Article = ({ data, icon, dataId, nowrap, date, title, text, url }) => (
         <Text typography={typography.bodyS} mb="10px">{date}</Text>
         {/* <FlexBox column maxHeight=""> */}
         <Heading className="article-title" color={color.white} mb="10px">{title}</Heading>
-        <Text className="article-content" typography={typography.bodyM} mb="26px">{text}</Text>
+        <Text className="article-content" typography={typography.bodyM} width="100%" mb="26px">{text}</Text>
         {/* </FlexBox> */}
         <Link to={`/${url}`} className="article-">Czytaj dalej</Link>
     </Wrapper>

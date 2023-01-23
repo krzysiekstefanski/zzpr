@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Card from "../molecules/card";
 import DoctorSVG from "../../images/doctor.inline.svg"
 import Heading from "../atoms/heading";
-import Grid from "../../components/grid";
+import Box from "../atoms/Box/Box";
 import { color } from "../../components/colors";
 
 const Wrapper = styled.div`
@@ -22,13 +22,13 @@ const Wrapper = styled.div`
 
 const ServicesBoxes = ({ data }) => (
     <Wrapper>
-        <Grid columns="1fr 1fr 1fr 1fr 1fr 1fr" gap="24px" width="100%" m="48px auto 85px">
+        <Box display="grid" columns="1fr 1fr" columnsSM="1fr 1fr 1fr" columnsLG="1fr 1fr 1fr 1fr 1fr 1fr" gap="24px" width="100%" margin="48px auto" marginMD="48px auto 85px">
             {data.uslugiUsluga.map((usluga, i) => (
                 <Link to={`/${usluga.uslugiLink}`}>
                 <Card data={usluga} dataId={i} />
                 </Link>
             ))}
-        </Grid>
+        </Box>
     </Wrapper>
 )
 

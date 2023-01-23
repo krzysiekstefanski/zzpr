@@ -5,7 +5,7 @@ import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 import Container from "../../atomic/partials/container";
 import Article from "../../atomic/molecules/article";
-import Grid from "../../components/grid"
+import Box from "../../atomic/atoms/Box/Box"
 import SectionTitle from "../../atomic/atoms/section-title";
 
 const ArticleWrapper = styled.div`
@@ -17,14 +17,14 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      <SectionTitle className="top-overlay" title="News" p="200px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
-      <Grid columns="33% 33% 33%" gap="30px" mb="100px">
+      <SectionTitle className="top-overlay" title="News" p="145px 0 8px 0" pMD="320px 0 8px 0" mb="48px" />
+      <Box column displayMD="grid" columnsMD="33% 33% 33%" gap="30px" margin="0 0 100px">
         {data.allWpPost.edges.map((post) => (
           <ArticleWrapper>
             <Article date={post.node.date} title={post.node.title} text={post.node.excerpt} url={post.node.slug} />
           </ArticleWrapper>
         ))}
-      </Grid>
+      </Box>
     </Container>
   </Layout>
 )

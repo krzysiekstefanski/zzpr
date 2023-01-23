@@ -11,20 +11,25 @@ import ArrowRightIcon from "../../images/arrow-right-red.inline.svg"
 
 const Wrapper = styled.a`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   background-color: ${color.neutral20};
   padding: 12px 16px;
   border-radius: 4px;
   text-decoration: none;
   margin-bottom: ${props => (props.mb ? props.mb : "")};
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const SquadFile = ({ data, mb }) => (
   <Wrapper href={data.kadraplikilink.localFile.publicURL} target="_blank" mb={mb}>
-    <FlexBox align="center">
-      <Icon size="32px">
+    <FlexBox align="center" m="0 0 16px" mMD="0">
+      <Icon hidden showMD size="32px">
         <FileIcon />
       </Icon>
       <Text typography={typography.bodyM} color={color.white} m="0 16px 0 8px">{data.kadraplikinazwa}</Text>

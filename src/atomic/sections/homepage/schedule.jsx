@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Container from "../../partials/container"
 import { color } from "../../../components/colors"
 import { FlexBox } from "../../../components/flexbox"
-import Grid from "../../../components/grid"
+import Box from "../../atoms/Box/Box"
 import SectionTitle from "../../atoms/section-title";
 import Text from "../../atoms/text";
 import Calendar from "../../../images/calendar.inline.svg"
@@ -63,7 +63,7 @@ const ScheduleSection = ({ className, data }) => (
         {data ?
             <Container>
                 <SectionTitle title="Terminarz" />
-                <Grid columns="1fr 1fr" gap="24px" width="100%" m="48px 0 0">
+                <Box column displayMD="grid" columnsMD="1fr 1fr" gap="24px" width="100%" margin="48px 0 0">
                     <FlexBox className="content-left" column width="100%">
                         <FlexBox className="content-left__title" column width="100%" mb="28px">
                             <Heading size="4" mb="8px">Najbliższe mecze</Heading>
@@ -98,7 +98,7 @@ const ScheduleSection = ({ className, data }) => (
                             ))}
                         </FlexBox>
                     </FlexBox>
-                </Grid>
+                </Box>
             </Container>
             : null}
     </Schedule>

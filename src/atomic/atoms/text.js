@@ -5,6 +5,7 @@ import { text } from "../../components/general-config"
 import { color } from "../../components/colors"
 
 const Paragraph = styled.p`
+  width: ${props => props.width};
   ${props => (props.typography ? props.typography : text.typography ? text.typography : "")}
   color: ${props => (props.color ? props.color : color.neutral60)};
   text-align: ${props => (props.center ? "center" : props.align ? props.align : "")};
@@ -37,8 +38,8 @@ const Paragraph = styled.p`
   }
 `;
 
-const Text = ({ className, text, children, typography, linkTypography, color, center, align, alignMD, nowrap, pl, pr, m, mr, mb, mbMD }) => (
-  <Paragraph className={className} typography={typography} linkTypography={linkTypography} color={color} center={center} align={align} alignMD={alignMD} nowrap={nowrap} pl={pl} pr={pr} m={m} mr={mr} mb={mb} mbMD={mbMD}>
+const Text = ({ className, text, children, typography, linkTypography, width, color, center, align, alignMD, nowrap, pl, pr, m, mr, mb, mbMD }) => (
+  <Paragraph className={className} typography={typography} linkTypography={linkTypography} width={width} color={color} center={center} align={align} alignMD={alignMD} nowrap={nowrap} pl={pl} pr={pr} m={m} mr={mr} mb={mb} mbMD={mbMD}>
     { text ? parse(text) : null }
     { children ? parse(children) : null }
   </Paragraph>

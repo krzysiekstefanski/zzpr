@@ -41,6 +41,11 @@ const Top = styled.section`
   width: 100%;
   position: relative;
   background-color: ${color.black};
+  margin-bottom: 32px;
+
+  @media (min-width: 769px) {
+    margin-bottom: 0;
+  }
 `
 
 const Overlay = styled.div`

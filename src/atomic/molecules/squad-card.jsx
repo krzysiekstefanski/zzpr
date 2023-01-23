@@ -11,20 +11,25 @@ import ArrowRightIcon from "../../images/arrow-right-red.inline.svg"
 
 const Wrapper = styled.a`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   background-color: ${color.neutral20};
   padding: 12px 16px;
   border-radius: 4px;
   text-decoration: none;
   margin-bottom: ${props => (props.mb ? props.mb : "")};
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const SquadCard = ({ data, mb }) => (
   <Wrapper href={data.kadradokument.localFile.publicURL} target="_blank" mb={mb}>
     <FlexBox align="center">
-      <Heading typography={typography.h400} color={color.white} m="0 16px 0">{data.kadratytul}</Heading>
+      <Heading typography={typography.h400} color={color.white} m="0 0 16px" mMD="0 16px">{data.kadratytul}</Heading>
     </FlexBox>
     <FlexBox align="center">
       <Text typography={typography.button} color={color.white} nowrap m="0 4px 0">Sprawdź</Text>
