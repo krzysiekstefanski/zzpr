@@ -53,7 +53,7 @@ const Sponsors = styled.section`
   }
 
   .sponsors {
-    img {
+    picture img {
       position: static !important;
       object-fit: contain !important;
     }
