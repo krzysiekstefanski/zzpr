@@ -53,9 +53,8 @@ const Sponsors = styled.section`
   }
 
   .sponsors {
-    picture img {
-      position: static !important;
-      object-fit: contain !important;
+    .gatsby-image-wrapper {
+      padding-top: 67%;
     }
   }
 
