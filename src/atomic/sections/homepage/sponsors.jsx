@@ -84,23 +84,26 @@ const SponsorsSection = ({ className, data }) => (
         m="64px 0 0"
         mMD="172px 0 0"
       >
-        {data.sponsorzyZdjecia?.map(zdjecie => (
-          <a
-            href={
-              zdjecie.sponsorzyZdjeciaLink ? zdjecie.sponsorzyZdjeciaLink : null
-            }
-            target="_blank"
-          >
-            <FlexBox className="content-left" width="100%" relative>
-              <Img
-                fixed={
-                  zdjecie.sponsorzyZdjeciaZdjecie?.localFile.childImageSharp
-                    .fluid
-                }
-              />
-            </FlexBox>
-          </a>
-        ))}
+        {data.sponsorzyZdjecia?.map(zdjecie => {
+          if (
+            !zdjecie.sponsorzyZdjeciaLink ||
+            !zdjecie.sponsorzyZdjeciaZdjecie
+          ) {
+            return
+          }
+          return (
+            <a href={zdjecie.sponsorzyZdjeciaLink} target="_blank">
+              <FlexBox className="content-left" width="100%" relative>
+                <Img
+                  fixed={
+                    zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp
+                      .fluid
+                  }
+                />
+              </FlexBox>
+            </a>
+          )
+        })}
       </Grid>
     </Container>
     <StaticImage
