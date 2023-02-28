@@ -94,7 +94,7 @@ const SponsorsSection = ({ className, data }) => (
             <FlexBox className="content-left" width="100%" relative>
               <Img
                 fixed={
-                  zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp
+                  zdjecie.sponsorzyZdjeciaZdjecie?.localFile.childImageSharp
                     .fluid
                 }
               />
