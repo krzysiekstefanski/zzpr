@@ -2,14 +2,14 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Top from "../atomic/sections/homepage/top";
-import Articles from "../atomic/sections/homepage/articles";
-import Sponsors from "../atomic/sections/homepage/sponsors";
-import Schedule from "../atomic/sections/homepage/schedule";
-import About from "../atomic/sections/homepage/about";
-import Info from "../atomic/sections/homepage/info";
-import Games from "../atomic/sections/homepage/games";
-import Team from "../atomic/sections/homepage/team";
+import Top from "../atomic/sections/homepage/top"
+import Articles from "../atomic/sections/homepage/articles"
+import Sponsors from "../atomic/sections/homepage/sponsors"
+import Schedule from "../atomic/sections/homepage/schedule"
+import About from "../atomic/sections/homepage/about"
+import Info from "../atomic/sections/homepage/info"
+import Games from "../atomic/sections/homepage/games"
+import Team from "../atomic/sections/homepage/team"
 import Contact from "../atomic/sections/homepage/contact"
 
 const IndexPage = ({ data }) => (
@@ -31,7 +31,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query WordpressPages {
-    allWpPage(filter: {id: {eq: "cG9zdDoy"}}) {
+    allWpPage(filter: { id: { eq: "cG9zdDoy" } }) {
       nodes {
         title
         ustawienia {
@@ -65,6 +65,7 @@ export const pageQuery = graphql`
               }
             }
             sponsorzyZdjeciaLink
+            sponsorzyZdjeciaDopasowanie
           }
         }
         terminarz {
@@ -97,7 +98,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWpPost(sort: { fields: [date], order:DESC }) {
+    allWpPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {
           title
