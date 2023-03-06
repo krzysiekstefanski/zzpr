@@ -99,7 +99,7 @@ const SponsorsSection = ({ className, data }) => (
                       .fluid
                   }
                   imgStyle={{
-                    objectFit: "contain",
+                    objectFit: zdjecie.sponsorzyZdjeciaDopasowanie,
                   }}
                 />
               </FlexBox>
