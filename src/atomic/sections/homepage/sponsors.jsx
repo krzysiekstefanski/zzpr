@@ -98,6 +98,9 @@ const SponsorsSection = ({ className, data }) => (
                     zdjecie.sponsorzyZdjeciaZdjecie.localFile.childImageSharp
                       .fluid
                   }
+                  imgStyle={{
+                    objectFit: "contain",
+                  }}
                 />
               </FlexBox>
             </a>
