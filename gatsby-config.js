@@ -18,7 +18,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Albert+Sans:300,400,500,600,700,800'],
+          families: ["Albert+Sans:300,400,500,600,700,800"],
         },
         active: () => {
           sessionStorage.fontsLoaded = true
@@ -54,6 +54,10 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: `https://kstefanski.pl/zzpr/graphql`,
+        schema: {
+          perPage: 200,
+          timeout: 60000,
+        },
       },
     },
     `gatsby-plugin-styled-components`,
