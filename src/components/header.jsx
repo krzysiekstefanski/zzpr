@@ -15,7 +15,6 @@ import DashboardSVG from "../images/dashboard.inline.svg"
 import ChatSVG from "../images/chat.inline.svg"
 import ArrowDownSVG from "../images/arrow-down.inline.svg"
 
-
 const CustomHeader = styled.header`
   display: flex;
   flex-direction: column;
@@ -62,7 +61,7 @@ const LogoWrapper = styled(Link)`
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     border: 8px solid ${color.black};
     position: absolute;
     top: 0;
@@ -95,7 +94,7 @@ const MobileLogoWrapper = styled(Link)`
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     border: 8px solid ${color.black};
     position: absolute;
     top: 0;
@@ -176,7 +175,7 @@ const TopNavList = styled.ul`
         color: ${menu.colorHover[0]};
 
         svg path {
-          fill:  ${menu.colorHover[0]};
+          fill: ${menu.colorHover[0]};
         }
       }
     }
@@ -185,7 +184,7 @@ const TopNavList = styled.ul`
   @media (min-width: 769px) {
     padding: 0;
     margin: 0 24px;
-    
+
     & > li {
       &:not(:last-child) {
         margin-right: 40px;
@@ -228,7 +227,7 @@ const Navigation = styled.nav`
       height: auto;
     }
   }
-`;
+`
 
 const NavList = styled.ul`
   display: flex;
@@ -283,7 +282,7 @@ const NavList = styled.ul`
         color: ${menu.colorHover[0]};
 
         svg path {
-          fill:  ${menu.colorHover[0]};
+          fill: ${menu.colorHover[0]};
         }
       }
     }
@@ -394,7 +393,7 @@ const Header = ({ siteTitle }) => {
 
   const handleClick = e => {
     setHamburgerIsActive(!hamburgerIsActive)
-    document.querySelectorAll('.header ul').forEach(function (list) {
+    document.querySelectorAll(".header ul").forEach(function (list) {
       list.classList.remove("active")
     })
   }
@@ -404,7 +403,7 @@ const Header = ({ siteTitle }) => {
     setHamburgerIsActive(hamburgerHandle)
 
     if (e.target.closest("a").nextSibling) {
-      document.querySelectorAll('.header ul').forEach(function (list) {
+      document.querySelectorAll(".header ul").forEach(function (list) {
         if (list !== e.target.closest("a").nextSibling) {
           list.classList.remove("active")
         }
@@ -422,28 +421,83 @@ const Header = ({ siteTitle }) => {
         <TopNav aria-label="secondary">
           <TopNavList>
             <li>
-              <LinkExt onClick={e => handleMenuItemClick(e, false)} mr="6px" mrMd="0"><AwardSVG />ZZPR<ArrowDownSVG className="arrow-down" /></LinkExt>
-              <SubMenu width="100vw" backgroundColor={color.black} backgroundColorMD={color.neutral00} top="31px" left="-15px">
+              <LinkExt
+                onClick={e => handleMenuItemClick(e, false)}
+                mr="6px"
+                mrMd="0"
+              >
+                <AwardSVG />
+                ZZPR
+                <ArrowDownSVG className="arrow-down" />
+              </LinkExt>
+              <SubMenu
+                width="100vw"
+                backgroundColor={color.black}
+                backgroundColorMD={color.neutral00}
+                top="31px"
+                left="-15px"
+              >
                 <li>
-                  <Link to="/zarzad" onClick={e => handleMenuItemClick(e, false)}>Zarząd</Link>
+                  <Link
+                    to="/zarzad"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Zarząd
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/galeria-slaw" onClick={e => handleMenuItemClick(e, false)}>Galeria Sław</Link>
+                  <Link
+                    to="/galeria-slaw"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Galeria Sław
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/historia" onClick={e => handleMenuItemClick(e, false)}>Historia</Link>
+                  <Link
+                    to="/historia"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Historia
+                  </Link>
                 </li>
               </SubMenu>
             </li>
             <li>
-              <Link to="/rozgrywki" onClick={e => handleMenuItemClick(e)} mr="6px"><DashboardSVG />Rozgrywki</Link>
+              <Link
+                to="/rozgrywki"
+                onClick={e => handleMenuItemClick(e)}
+                mr="6px"
+              >
+                <DashboardSVG />
+                Rozgrywki
+              </Link>
             </li>
             <li>
-              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e, false)} display="none" displayMD="flex"><DocumentSVG />Regulaminy i przepisy</Link>
-              <Link to="/regulaminy-i-przepisy" onClick={e => handleMenuItemClick(e, false)} displayMD="none" mr="6px"><DocumentSVG />Przepisy</Link>
+              <Link
+                to="/regulaminy-i-przepisy"
+                onClick={e => handleMenuItemClick(e, false)}
+                display="none"
+                displayMD="flex"
+              >
+                <DocumentSVG />
+                Regulaminy
+              </Link>
+              <Link
+                to="/regulaminy-i-przepisy"
+                onClick={e => handleMenuItemClick(e, false)}
+                displayMD="none"
+                mr="6px"
+              >
+                <DocumentSVG />
+                Regulaminy
+              </Link>
             </li>
             <li>
-              <Link to="/kontakt" onClick={e => handleMenuItemClick(e, false)}><ChatSVG />Kontakt</Link>
+              <Link to="/kontakt" onClick={e => handleMenuItemClick(e, false)}>
+                <ChatSVG />
+                Kontakt
+              </Link>
             </li>
           </TopNavList>
         </TopNav>
@@ -460,67 +514,165 @@ const Header = ({ siteTitle }) => {
           <span />
           <span />
         </Hamburger>
-        <Navigation className={hamburgerIsActive ? "active" : "hidden"} aria-label="primary">
+        <Navigation
+          className={hamburgerIsActive ? "active" : "hidden"}
+          aria-label="primary"
+        >
           <NavList>
             <li>
-              <Link to="/news" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">News</Link>
+              <Link
+                to="/news"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                News
+              </Link>
             </li>
             <hr />
             <li>
-              <Link to="/wydarzenia" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Wydarzenia</Link>
+              <Link
+                to="/wydarzenia"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                Wydarzenia
+              </Link>
             </li>
             <hr />
             <li>
-              <Link to="/kluby" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Kluby</Link>
+              <Link
+                to="/kluby"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                Kluby
+              </Link>
             </li>
             <hr />
             <li>
-              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Kadry<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <LinkExt
+                onClick={e => handleMenuItemClick(e, true)}
+                ml="8px"
+                mlMD="0"
+              >
+                Kadry
+                <ArrowDownSVG className="arrow-down" />
+              </LinkExt>
               <SubMenu position="static">
                 <li>
-                  <Link to="/kadry/chlopcy" onClick={e => handleMenuItemClick(e, false)}>Kadry - Chłopcy</Link>
+                  <Link
+                    to="/kadry/chlopcy"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Kadry - Chłopcy
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/kadry/dziewczeta" onClick={e => handleMenuItemClick(e, false)}>Kadry - Dziewczęta</Link>
+                  <Link
+                    to="/kadry/dziewczeta"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Kadry - Dziewczęta
+                  </Link>
                 </li>
               </SubMenu>
             </li>
             <hr />
             <li>
-              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Trenerzy<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <LinkExt
+                onClick={e => handleMenuItemClick(e, true)}
+                ml="8px"
+                mlMD="0"
+              >
+                Trenerzy
+                <ArrowDownSVG className="arrow-down" />
+              </LinkExt>
               <SubMenu position="static">
                 <li>
-                  <Link to="/trenerzy" onClick={e => handleMenuItemClick(e, false)}>Trenerzy</Link>
+                  <Link
+                    to="/trenerzy"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Trenerzy
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/ospr" onClick={e => handleMenuItemClick(e, false)}>OSPR</Link>
+                  <Link to="/ospr" onClick={e => handleMenuItemClick(e, false)}>
+                    OSPR
+                  </Link>
                 </li>
               </SubMenu>
             </li>
             <hr />
             <li>
-              <Link to="/sedziowie" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Sędziowie</Link>
+              <Link
+                to="/sedziowie"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                Sędziowie
+              </Link>
             </li>
             <hr />
             <li>
-              <Link to="/oldboys" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Oldboys</Link>
+              <Link
+                to="/oldboys"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                Oldboys
+              </Link>
             </li>
             <hr />
             <li>
-              <Link to="/pilka-reczna-plazowa" onClick={e => handleMenuItemClick(e, false)} ml="8px" mlMD="0">Ręczna plażowa</Link>
+              <Link
+                to="/pilka-reczna-plazowa"
+                onClick={e => handleMenuItemClick(e, false)}
+                ml="8px"
+                mlMD="0"
+              >
+                Ręczna plażowa
+              </Link>
             </li>
             <hr />
             <li>
-              <LinkExt onClick={e => handleMenuItemClick(e, true)} ml="8px" mlMD="0">Galerie<ArrowDownSVG className="arrow-down" /></LinkExt>
+              <LinkExt
+                onClick={e => handleMenuItemClick(e, true)}
+                ml="8px"
+                mlMD="0"
+              >
+                Galerie
+                <ArrowDownSVG className="arrow-down" />
+              </LinkExt>
               <SubMenu className="contact" position="static">
                 <li>
-                  <Link to="/galerie/kadry" onClick={e => handleMenuItemClick(e, false)}>Kadry</Link>
+                  <Link
+                    to="/galerie/kadry"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Kadry
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/galerie/konferencje" onClick={e => handleMenuItemClick(e, false)}>Konferencje</Link>
+                  <Link
+                    to="/galerie/konferencje"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Konferencje
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/galerie/puchar-zzpr" onClick={e => handleMenuItemClick(e, false)}>Puchar ZZPR</Link>
+                  <Link
+                    to="/galerie/puchar-zzpr"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Puchar ZZPR
+                  </Link>
                 </li>
               </SubMenu>
             </li>
