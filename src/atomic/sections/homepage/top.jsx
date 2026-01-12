@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 import Img from "gatsby-image"
-import Container from "../../partials/container";
+import Container from "../../partials/container"
 import { color } from "../../../components/colors"
-import Button from "../../atoms/button";
-import Heading from "../../atoms/top-title";
-import Text from "../../atoms/text";
+import Button from "../../atoms/button"
+import Heading from "../../atoms/top-title"
+import Text from "../../atoms/text"
 import { typography } from "../../../components/typography"
 
 const HomepageTopSection = ({ data }) => (
@@ -13,14 +13,17 @@ const HomepageTopSection = ({ data }) => (
     <Overlay className="top-overlay">
       <Container className="top-content">
         <Content>
-          <Heading size="1" mb="32px">Zachodniopomorski Związek Piłki Ręcznej
-            w Szczecinie</Heading>
-          <Text typography={typography.bodyL} mb="80px">Zapoznaj się z najnowszymi informacjami i sprawdź terminarze nadchodzących spotkań.</Text>
+          <Heading size="1" mb="32px">
+            Zachodniopomorski Związek Piłki Ręcznej w Szczecinie
+          </Heading>
+          <Text typography={typography.bodyL} mb="80px">
+            Zapoznaj się z najnowszymi informacjami i sprawdź terminarze
+            nadchodzących spotkań.
+          </Text>
           <Button
             content={{
               text: "Sprawdź",
-              url:
-                "#wydarzenia",
+              url: "#wydarzenia",
             }}
             radius="27px"
             p="14px 53px"
@@ -28,7 +31,9 @@ const HomepageTopSection = ({ data }) => (
           />
         </Content>
         <TopImage>
-          <Img fixed={data.zdjecieGlowneObraz.localFile.childImageSharp.fluid} />
+          <Img
+            fixed={data.zdjecieGlowneObraz?.localFile.childImageSharp.fluid}
+          />
         </TopImage>
       </Container>
     </Overlay>
@@ -59,7 +64,6 @@ const Overlay = styled.div`
     justify-content: space-between;
   }
 
-
   &.form-overlay {
     padding: 100px 0 60px;
     position: static;
@@ -71,14 +75,14 @@ const Content = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 15px 15px 15px 0;
-  
+
   @media (min-width: 769px) {
     width: 50%;
     max-width: 610px;
     padding: 90px 0 110px;
     marign-right: auto;
   }
-`;
+`
 
 const TopImage = styled.div`
   display: none;
@@ -88,7 +92,7 @@ const TopImage = styled.div`
   max-width: 570px;
   padding: 15px 0 125px 15px;
   position: relative;
-  
+
   @media (min-width: 769px) {
     display: flex;
   }
@@ -106,4 +110,4 @@ const TopImage = styled.div`
       mix-blend-mode: lighten;
     }
   }
-`;
+`
