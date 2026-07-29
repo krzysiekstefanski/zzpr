@@ -439,6 +439,14 @@ const Header = ({ siteTitle }) => {
               >
                 <li>
                   <Link
+                    to="/komisje-zadaniowe-zzpr"
+                    onClick={e => handleMenuItemClick(e, false)}
+                  >
+                    Komisje Zadaniowe ZZPR
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/zarzad"
                     onClick={e => handleMenuItemClick(e, false)}
                   >

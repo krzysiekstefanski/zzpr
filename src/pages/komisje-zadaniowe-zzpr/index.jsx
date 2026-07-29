@@ -32,13 +32,13 @@ const Content = styled.div`
   }
 `
 
-const OsprPage = ({ data }) => (
+const KomisjePage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
       <SectionTitle
         className="top-overlay"
-        title="OSPR"
+        title="Komisje Zadaniowe ZZPR"
         p="145px 0 8px 0"
         pMD="320px 0 8px 0"
         mb="48px"
@@ -52,10 +52,10 @@ const OsprPage = ({ data }) => (
   </Layout>
 )
 
-export default OsprPage
+export default KomisjePage
 
 export const pageQuery = graphql`
-  query WordpressOspr {
+  query WordpressKomisje {
     wpPage(id: { eq: "cG9zdDoy" }) {
       ustawienia {
         ustawieniaTytulStrony
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
         ustawieniaKolorDodatkowy
       }
     }
-    allWpPage(filter: { id: { eq: "cG9zdDo4MzQ=" } }) {
+    allWpPage(filter: { id: { eq: "cG9zdDozMzky" } }) {
       nodes {
         title
         content
