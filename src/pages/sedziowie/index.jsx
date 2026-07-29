@@ -13,7 +13,6 @@ const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
     <Container>
-      {console.log(data.allWpPage.nodes[0].sedziowie)}
       <SectionTitle
         className="top-overlay"
         title="Sędziowe"

@@ -24,7 +24,9 @@ const Content = styled.div`
     margin-bottom: 32px;
   }
 
-  p {
+  p,
+  ul,
+  a {
     color: #fff;
     margin-bottom: 24px;
   }
