@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
+import styled from "styled-components"
 import Container from "../../atomic/partials/container"
 import SectionTitle from "../../atomic/atoms/section-title"
 import DownloadArea from "../../atomic/organisms/download-area"
@@ -9,6 +10,26 @@ import Heading from "../../atomic/atoms/heading"
 import Text from "../../atomic/atoms/text"
 import parse from "html-react-parser"
 
+const Content = styled.div`
+  margin-bottom: 48px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  p,
+  ul,
+  a {
+    color: #fff;
+    margin-bottom: 24px;
+  }
+`
 const NewsPage = ({ data }) => (
   <Layout>
     <Seo title={data.wpPage.ustawienia.ustawieniaTytulStrony} />
