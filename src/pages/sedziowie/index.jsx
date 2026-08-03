@@ -20,14 +20,11 @@ const NewsPage = ({ data }) => (
         pMD="320px 0 8px 0"
         mb="48px"
       />
-      <Heading size="3" mb="24px">
-        Komisja sędziowska zachodniopomorskiego związku piłki ręcznej
-      </Heading>
-      {data.allWpPage.nodes[0].sedziowie.komisja.map((osoba, i) => (
-        <Text mb="16px">
-          {parse(osoba.komisjastanowisko + ": " + osoba.komisjaimie)}
-        </Text>
-      ))}
+      {data.allWpPage.nodes[0].content ? (
+        <Content>{parse(data.allWpPage.nodes[0].content)}</Content>
+      ) : (
+        <Text>Strona w trakcie budowy</Text>
+      )}
       <DownloadArea
         data={data.allWpPage.nodes[0].sedziowie.sedziowieLista}
         mb="48px"
@@ -51,11 +48,8 @@ export const pageQuery = graphql`
     allWpPage(filter: { id: { eq: "cG9zdDo2MTA=" } }) {
       nodes {
         title
+        content
         sedziowie {
-          komisja {
-            komisjaimie
-            komisjastanowisko
-          }
           sedziowieLista {
             plik {
               localFile {
