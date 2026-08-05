@@ -36,7 +36,7 @@ const NewsPage = ({ data }) => (
     <Container>
       <SectionTitle
         className="top-overlay"
-        title="Sędziowe"
+        title="Sędziowie"
         p="145px 0 8px 0"
         pMD="320px 0 8px 0"
         mb="48px"
